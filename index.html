@@ -1,0 +1,598 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>今日发品复制页 2026-07-09</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #f4efe6;
+      --paper: #fffdf9;
+      --ink: #201d18;
+      --muted: #72685b;
+      --line: #ddd2c3;
+      --accent: #0e6d66;
+      --accent-2: #c46528;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+      background:
+        radial-gradient(circle at top left, #fff7eb 0, transparent 30%),
+        linear-gradient(180deg, #eee5d6 0%, var(--bg) 100%);
+    }
+    .wrap {
+      max-width: 1480px;
+      margin: 0 auto;
+      padding: 28px 18px 56px;
+    }
+    .hero {
+      margin-bottom: 22px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: rgba(255, 253, 249, 0.96);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.05);
+    }
+    h1 {
+      margin: 0 0 10px;
+      font-size: 34px;
+      letter-spacing: -0.03em;
+    }
+    .sub {
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 11px 18px;
+      background: var(--accent);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    button.big {
+      background: var(--accent-2);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .product-card {
+      padding: 20px;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: rgba(255, 253, 249, 0.97);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.04);
+    }
+    .product-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+    .eyebrow {
+      margin-bottom: 4px;
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0;
+      font-size: 22px;
+      line-height: 1.2;
+    }
+    .module {
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid var(--line);
+    }
+    .module:first-of-type {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: 0;
+    }
+    .module-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    h3 {
+      margin: 0;
+      color: var(--muted);
+      font-size: 15px;
+    }
+    pre {
+      margin: 0;
+      padding: 12px;
+      border-radius: 14px;
+      background: #faf6ef;
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.7;
+      font-size: 14px;
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+    }
+    .tip {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>今日发品复制页</h1>
+      <div class="sub">7月9日 周四 · 共 3 个商品 · 每个模块都支持一键复制</div>
+      <div class="toolbar">
+        <button id="copy-all">一键复制全部商品内容</button>
+      </div>
+      <div class="tip">打开这个页面后，你可以按产品分列查看，并分别复制标题、副标题、关键词、属性、价格建议和主图生成提示词。</div>
+    </section>
+    <div class="grid">
+      
+            <section class="product-card">
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">产品 1</div>
+                  <h2>1205</h2>
+                </div>
+                <button class="copy-btn big" data-copy="标题：
+1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment
+
+副标题：
+1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing
+
+商品关键词：
+1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier
+
+商品属性：
+- Model Number: 1205
+- Type: Self-aligning Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.14kg
+
+价格建议：
+- Reference Price: 1.20
+- Suggested Listing Price: 1.44
+- MOQ: 100 pcs
+
+主图生成提示词：
+Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <h3>标题</h3>
+                    <button class="copy-btn" data-copy="标题：
+1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment">复制</button>
+                  </div>
+                  <pre>标题：
+1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>副标题</h3>
+                    <button class="copy-btn" data-copy="副标题：
+1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing">复制</button>
+                  </div>
+                  <pre>副标题：
+1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>商品关键词</h3>
+                    <button class="copy-btn" data-copy="商品关键词：
+1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier">复制</button>
+                  </div>
+                  <pre>商品关键词：
+1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>商品属性</h3>
+                    <button class="copy-btn" data-copy="商品属性：
+- Model Number: 1205
+- Type: Self-aligning Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.14kg">复制</button>
+                  </div>
+                  <pre>商品属性：
+- Model Number: 1205
+- Type: Self-aligning Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.14kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>价格建议</h3>
+                    <button class="copy-btn" data-copy="价格建议：
+- Reference Price: 1.20
+- Suggested Listing Price: 1.44
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>价格建议：
+- Reference Price: 1.20
+- Suggested Listing Price: 1.44
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>主图生成提示词</h3>
+                    <button class="copy-btn" data-copy="主图生成提示词：
+Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>主图生成提示词：
+Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section class="product-card">
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">产品 2</div>
+                  <h2>7205</h2>
+                </div>
+                <button class="copy-btn big" data-copy="标题：
+7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery
+
+副标题：
+7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing
+
+商品关键词：
+7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+
+商品属性：
+- Model Number: 7205
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.13kg
+
+价格建议：
+- Reference Price: 1.50
+- Suggested Listing Price: 1.80
+- MOQ: 100 pcs
+
+主图生成提示词：
+Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <h3>标题</h3>
+                    <button class="copy-btn" data-copy="标题：
+7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery">复制</button>
+                  </div>
+                  <pre>标题：
+7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>副标题</h3>
+                    <button class="copy-btn" data-copy="副标题：
+7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing">复制</button>
+                  </div>
+                  <pre>副标题：
+7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>商品关键词</h3>
+                    <button class="copy-btn" data-copy="商品关键词：
+7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase">复制</button>
+                  </div>
+                  <pre>商品关键词：
+7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>商品属性</h3>
+                    <button class="copy-btn" data-copy="商品属性：
+- Model Number: 7205
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.13kg">复制</button>
+                  </div>
+                  <pre>商品属性：
+- Model Number: 7205
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.13kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>价格建议</h3>
+                    <button class="copy-btn" data-copy="价格建议：
+- Reference Price: 1.50
+- Suggested Listing Price: 1.80
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>价格建议：
+- Reference Price: 1.50
+- Suggested Listing Price: 1.80
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>主图生成提示词</h3>
+                    <button class="copy-btn" data-copy="主图生成提示词：
+Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>主图生成提示词：
+Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section class="product-card">
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">产品 3</div>
+                  <h2>7306</h2>
+                </div>
+                <button class="copy-btn big" data-copy="标题：
+7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply
+
+副标题：
+7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing
+
+商品关键词：
+7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+
+商品属性：
+- Model Number: 7306
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 72mm
+- Width: 19mm
+- Weight: 0.33kg
+
+价格建议：
+- Reference Price: 2.10
+- Suggested Listing Price: 2.52
+- MOQ: 100 pcs
+
+主图生成提示词：
+Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <h3>标题</h3>
+                    <button class="copy-btn" data-copy="标题：
+7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply">复制</button>
+                  </div>
+                  <pre>标题：
+7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>副标题</h3>
+                    <button class="copy-btn" data-copy="副标题：
+7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing">复制</button>
+                  </div>
+                  <pre>副标题：
+7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>商品关键词</h3>
+                    <button class="copy-btn" data-copy="商品关键词：
+7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase">复制</button>
+                  </div>
+                  <pre>商品关键词：
+7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>商品属性</h3>
+                    <button class="copy-btn" data-copy="商品属性：
+- Model Number: 7306
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 72mm
+- Width: 19mm
+- Weight: 0.33kg">复制</button>
+                  </div>
+                  <pre>商品属性：
+- Model Number: 7306
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 72mm
+- Width: 19mm
+- Weight: 0.33kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>价格建议</h3>
+                    <button class="copy-btn" data-copy="价格建议：
+- Reference Price: 2.10
+- Suggested Listing Price: 2.52
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>价格建议：
+- Reference Price: 2.10
+- Suggested Listing Price: 2.52
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <h3>主图生成提示词</h3>
+                    <button class="copy-btn" data-copy="主图生成提示词：
+Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>主图生成提示词：
+Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+    </div>
+  </div>
+  <script>
+    const allText = `标题：
+1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment
+
+副标题：
+1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing
+
+商品关键词：
+1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier
+
+商品属性：
+- Model Number: 1205
+- Type: Self-aligning Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.14kg
+
+价格建议：
+- Reference Price: 1.20
+- Suggested Listing Price: 1.44
+- MOQ: 100 pcs
+
+主图生成提示词：
+Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+标题：
+7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery
+
+副标题：
+7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing
+
+商品关键词：
+7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+
+商品属性：
+- Model Number: 7205
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 15mm
+- Weight: 0.13kg
+
+价格建议：
+- Reference Price: 1.50
+- Suggested Listing Price: 1.80
+- MOQ: 100 pcs
+
+主图生成提示词：
+Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+标题：
+7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply
+
+副标题：
+7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing
+
+商品关键词：
+7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+
+商品属性：
+- Model Number: 7306
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 72mm
+- Width: 19mm
+- Weight: 0.33kg
+
+价格建议：
+- Reference Price: 2.10
+- Suggested Listing Price: 2.52
+- MOQ: 100 pcs
+
+主图生成提示词：
+Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        alert("复制成功");
+      } catch (error) {
+        alert("复制失败，请手动复制。");
+      }
+    }
+    document.getElementById("copy-all").addEventListener("click", () => copyText(allText));
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", () => copyText(button.dataset.copy));
+    });
+  </script>
+</body>
+</html>
