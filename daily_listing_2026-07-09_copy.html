@@ -375,7 +375,6 @@
     }
     .module.copied,
     .product-card.copied,
-    .sticky-inner.copied,
     .toolbar.copied {
       box-shadow: 0 0 0 3px rgba(14, 124, 113, 0.12), 0 16px 28px rgba(13, 111, 100, 0.10);
       border-color: rgba(14, 124, 113, 0.28);
@@ -421,32 +420,6 @@
       color: rgba(255,250,244,0.86);
       font-size: 14px;
       line-height: 1.8;
-    }
-    .sticky-bar {
-      position: sticky;
-      top: 14px;
-      z-index: 20;
-      display: flex;
-      justify-content: center;
-      margin-bottom: 18px;
-      pointer-events: none;
-    }
-    .sticky-inner {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 11px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.84);
-      border: 1px solid rgba(123, 98, 78, 0.12);
-      box-shadow: 0 10px 30px rgba(73, 51, 29, 0.10);
-      backdrop-filter: blur(8px);
-      pointer-events: auto;
-    }
-    .sticky-note {
-      color: #5a5f68;
-      font-size: 13px;
-      font-weight: 700;
     }
     .back-top {
       position: fixed;
@@ -511,10 +484,6 @@
       .hero { padding: 22px; border-radius: 24px; }
       h1 { font-size: 32px; }
       .hero-top { flex-direction: column; }
-      .sticky-inner {
-        width: 100%;
-        justify-content: space-between;
-      }
       .nav-grid {
         flex-direction: column;
       }
@@ -529,13 +498,6 @@
   <div class="float-blob blob-b"></div>
   <div class="float-blob blob-c"></div>
   <div class="wrap">
-    <div class="sticky-bar">
-      <div class="sticky-inner">
-        <div class="sticky-note">打开页面后，点一下就能复制，不会再弹确认框。</div>
-        <button id="copy-all">一键复制全部商品内容</button>
-      </div>
-    </div>
-
     <section class="hero">
       <div class="hero-top">
         <div class="hero-copy">
@@ -1089,14 +1051,14 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
         showToast("已复制");
         return;
       }
-      button.closest(".module, .product-card, .sticky-inner, .toolbar")?.classList?.add("copied");
+      button.closest(".module, .product-card, .toolbar")?.classList?.add("copied");
       const originalText = button.dataset.originalText || button.textContent;
       button.dataset.originalText = originalText;
       button.textContent = "已复制";
       showToast("已复制");
       setTimeout(() => {
         button.textContent = originalText;
-        button.closest(".module, .product-card, .sticky-inner, .toolbar")?.classList?.remove("copied");
+        button.closest(".module, .product-card, .toolbar")?.classList?.remove("copied");
       }, 1000);
     }
 
@@ -1126,7 +1088,6 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
       }
     }
 
-    document.getElementById("copy-all").addEventListener("click", (event) => copyText(allText, event.currentTarget));
     document.getElementById("copy-all-hero").addEventListener("click", (event) => copyText(allText, event.currentTarget));
     document.querySelectorAll(".copy-btn").forEach((button) => {
       button.addEventListener("click", () => copyText(button.dataset.copy, button));
