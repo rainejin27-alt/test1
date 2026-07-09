@@ -85,6 +85,13 @@
       gap: 12px;
       margin-bottom: 16px;
     }
+    .coverage {
+      margin-top: 8px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+      max-width: 320px;
+    }
     .eyebrow {
       margin-bottom: 4px;
       color: var(--accent);
@@ -137,6 +144,27 @@
       font-size: 14px;
       line-height: 1.6;
     }
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(14, 109, 102, 0.96);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.14);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 9999;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
     @media (max-width: 1100px) {
       .grid { grid-template-columns: 1fr; }
     }
@@ -158,101 +186,102 @@
               <div class="product-head">
                 <div>
                   <div class="eyebrow">产品 1</div>
-                  <h2>1205</h2>
+                  <h2>22210</h2>
+                  <div class="coverage">热门覆盖型号：22210 / 22205 / 22206 / 22207 / 22208 / 22209 / 22211 / 22212 / 22213</div>
                 </div>
                 <button class="copy-btn big" data-copy="标题：
-1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment
+Ready Stock 22210 22205 22206 22207 22208 22209 22211 22212 22213 Spherical Roller Bearing Chrome Steel for Mining Machinery
 
 副标题：
-1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing
+22210, 22205, 22206, 22207, 22208, 22209, 22211 available for wholesale supply with stable quality OEM support and export
 
 商品关键词：
-1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier
+22210 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22210, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22210 Spherical Roller Bearing
 
 商品属性：
-- Model Number: 1205
-- Type: Self-aligning Ball Bearing
+- Model Number: 22210
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.14kg
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg
 
 价格建议：
-- Reference Price: 1.20
-- Suggested Listing Price: 1.44
+- Reference Price: 5.80
+- Suggested Listing Price: 6.96
 - MOQ: 100 pcs
 
 主图生成提示词：
-Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
               
                 <div class="module">
                   <div class="module-head">
                     <h3>标题</h3>
                     <button class="copy-btn" data-copy="标题：
-1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment">复制</button>
+Ready Stock 22210 22205 22206 22207 22208 22209 22211 22212 22213 Spherical Roller Bearing Chrome Steel for Mining Machinery">复制</button>
                   </div>
                   <pre>标题：
-1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment</pre>
+Ready Stock 22210 22205 22206 22207 22208 22209 22211 22212 22213 Spherical Roller Bearing Chrome Steel for Mining Machinery</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>副标题</h3>
                     <button class="copy-btn" data-copy="副标题：
-1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing">复制</button>
+22210, 22205, 22206, 22207, 22208, 22209, 22211 available for wholesale supply with stable quality OEM support and export">复制</button>
                   </div>
                   <pre>副标题：
-1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing</pre>
+22210, 22205, 22206, 22207, 22208, 22209, 22211 available for wholesale supply with stable quality OEM support and export</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>商品关键词</h3>
                     <button class="copy-btn" data-copy="商品关键词：
-1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier">复制</button>
+22210 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22210, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22210 Spherical Roller Bearing">复制</button>
                   </div>
                   <pre>商品关键词：
-1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier</pre>
+22210 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22210, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22210 Spherical Roller Bearing</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>商品属性</h3>
                     <button class="copy-btn" data-copy="商品属性：
-- Model Number: 1205
-- Type: Self-aligning Ball Bearing
+- Model Number: 22210
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.14kg">复制</button>
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg">复制</button>
                   </div>
                   <pre>商品属性：
-- Model Number: 1205
-- Type: Self-aligning Ball Bearing
+- Model Number: 22210
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.14kg</pre>
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>价格建议</h3>
                     <button class="copy-btn" data-copy="价格建议：
-- Reference Price: 1.20
-- Suggested Listing Price: 1.44
+- Reference Price: 5.80
+- Suggested Listing Price: 6.96
 - MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>价格建议：
-- Reference Price: 1.20
-- Suggested Listing Price: 1.44
+- Reference Price: 5.80
+- Suggested Listing Price: 6.96
 - MOQ: 100 pcs</pre>
                 </div>
                 
@@ -260,10 +289,10 @@ Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Stee
                   <div class="module-head">
                     <h3>主图生成提示词</h3>
                     <button class="copy-btn" data-copy="主图生成提示词：
-Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>主图生成提示词：
-Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
                 </div>
                 
             </section>
@@ -272,101 +301,102 @@ Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Stee
               <div class="product-head">
                 <div>
                   <div class="eyebrow">产品 2</div>
-                  <h2>7205</h2>
+                  <h2>22212</h2>
+                  <div class="coverage">热门覆盖型号：22212 / 22205 / 22206 / 22207 / 22208 / 22209 / 22210 / 22211 / 22213</div>
                 </div>
                 <button class="copy-btn big" data-copy="标题：
-7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery
+Direct Factory 22212 22205 22206 22207 22208 22209 22210 22211 22213 Spherical Roller Bearing Open for Transmission Equipment
 
 副标题：
-7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing
+22212, 22205, 22206, 22207, 22208, 22209, 22210 available for wholesale supply with stable quality OEM support and export
 
 商品关键词：
-7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+22212 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22212, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22212 Spherical Roller Bearing
 
 商品属性：
-- Model Number: 7205
-- Type: Angular Contact Ball Bearing
+- Model Number: 22212
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.13kg
+- Bore Size: 60mm
+- Outside Diameter: 110mm
+- Width: 28mm
+- Weight: 1.25kg
 
 价格建议：
-- Reference Price: 1.50
-- Suggested Listing Price: 1.80
+- Reference Price: 7.40
+- Suggested Listing Price: 8.88
 - MOQ: 100 pcs
 
 主图生成提示词：
-Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
               
                 <div class="module">
                   <div class="module-head">
                     <h3>标题</h3>
                     <button class="copy-btn" data-copy="标题：
-7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery">复制</button>
+Direct Factory 22212 22205 22206 22207 22208 22209 22210 22211 22213 Spherical Roller Bearing Open for Transmission Equipment">复制</button>
                   </div>
                   <pre>标题：
-7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery</pre>
+Direct Factory 22212 22205 22206 22207 22208 22209 22210 22211 22213 Spherical Roller Bearing Open for Transmission Equipment</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>副标题</h3>
                     <button class="copy-btn" data-copy="副标题：
-7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing">复制</button>
+22212, 22205, 22206, 22207, 22208, 22209, 22210 available for wholesale supply with stable quality OEM support and export">复制</button>
                   </div>
                   <pre>副标题：
-7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing</pre>
+22212, 22205, 22206, 22207, 22208, 22209, 22210 available for wholesale supply with stable quality OEM support and export</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>商品关键词</h3>
                     <button class="copy-btn" data-copy="商品关键词：
-7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase">复制</button>
+22212 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22212, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22212 Spherical Roller Bearing">复制</button>
                   </div>
                   <pre>商品关键词：
-7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase</pre>
+22212 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22212, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22212 Spherical Roller Bearing</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>商品属性</h3>
                     <button class="copy-btn" data-copy="商品属性：
-- Model Number: 7205
-- Type: Angular Contact Ball Bearing
+- Model Number: 22212
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.13kg">复制</button>
+- Bore Size: 60mm
+- Outside Diameter: 110mm
+- Width: 28mm
+- Weight: 1.25kg">复制</button>
                   </div>
                   <pre>商品属性：
-- Model Number: 7205
-- Type: Angular Contact Ball Bearing
+- Model Number: 22212
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.13kg</pre>
+- Bore Size: 60mm
+- Outside Diameter: 110mm
+- Width: 28mm
+- Weight: 1.25kg</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>价格建议</h3>
                     <button class="copy-btn" data-copy="价格建议：
-- Reference Price: 1.50
-- Suggested Listing Price: 1.80
+- Reference Price: 7.40
+- Suggested Listing Price: 8.88
 - MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>价格建议：
-- Reference Price: 1.50
-- Suggested Listing Price: 1.80
+- Reference Price: 7.40
+- Suggested Listing Price: 8.88
 - MOQ: 100 pcs</pre>
                 </div>
                 
@@ -374,10 +404,10 @@ Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome St
                   <div class="module-head">
                     <h3>主图生成提示词</h3>
                     <button class="copy-btn" data-copy="主图生成提示词：
-Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>主图生成提示词：
-Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
                 </div>
                 
             </section>
@@ -386,101 +416,102 @@ Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome St
               <div class="product-head">
                 <div>
                   <div class="eyebrow">产品 3</div>
-                  <h2>7306</h2>
+                  <h2>22308</h2>
+                  <div class="coverage">热门覆盖型号：22308 / 22210 / 22211 / 22212 / 22213 / 22309 / 22310 / 22311 / 22312 / 22313 / 22205</div>
                 </div>
                 <button class="copy-btn big" data-copy="标题：
-7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply
+22308 22210 22211 22212 22213 22309 22310 22311 22312 22313 22205 Spherical Roller Bearing Open for Vibration Screen Machinery
 
 副标题：
-7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing
+22308, 22210, 22211, 22212, 22213, 22309, 22310 bearings for Vibration Screen Machinery with OEM support and export packing
 
 商品关键词：
-7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+22308 bearing, 22210 bearing, 22211 bearing, 22212 bearing, 22213 bearing, 22309 bearing, 22308, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22308 Spherical Roller Bearing
 
 商品属性：
-- Model Number: 7306
-- Type: Angular Contact Ball Bearing
+- Model Number: 22308
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 30mm
-- Outside Diameter: 72mm
-- Width: 19mm
-- Weight: 0.33kg
+- Bore Size: 40mm
+- Outside Diameter: 90mm
+- Width: 33mm
+- Weight: 0.92kg
 
 价格建议：
-- Reference Price: 2.10
-- Suggested Listing Price: 2.52
+- Reference Price: 6.10
+- Suggested Listing Price: 7.32
 - MOQ: 100 pcs
 
 主图生成提示词：
-Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
               
                 <div class="module">
                   <div class="module-head">
                     <h3>标题</h3>
                     <button class="copy-btn" data-copy="标题：
-7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply">复制</button>
+22308 22210 22211 22212 22213 22309 22310 22311 22312 22313 22205 Spherical Roller Bearing Open for Vibration Screen Machinery">复制</button>
                   </div>
                   <pre>标题：
-7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply</pre>
+22308 22210 22211 22212 22213 22309 22310 22311 22312 22313 22205 Spherical Roller Bearing Open for Vibration Screen Machinery</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>副标题</h3>
                     <button class="copy-btn" data-copy="副标题：
-7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing">复制</button>
+22308, 22210, 22211, 22212, 22213, 22309, 22310 bearings for Vibration Screen Machinery with OEM support and export packing">复制</button>
                   </div>
                   <pre>副标题：
-7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing</pre>
+22308, 22210, 22211, 22212, 22213, 22309, 22310 bearings for Vibration Screen Machinery with OEM support and export packing</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>商品关键词</h3>
                     <button class="copy-btn" data-copy="商品关键词：
-7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase">复制</button>
+22308 bearing, 22210 bearing, 22211 bearing, 22212 bearing, 22213 bearing, 22309 bearing, 22308, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22308 Spherical Roller Bearing">复制</button>
                   </div>
                   <pre>商品关键词：
-7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase</pre>
+22308 bearing, 22210 bearing, 22211 bearing, 22212 bearing, 22213 bearing, 22309 bearing, 22308, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22308 Spherical Roller Bearing</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>商品属性</h3>
                     <button class="copy-btn" data-copy="商品属性：
-- Model Number: 7306
-- Type: Angular Contact Ball Bearing
+- Model Number: 22308
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 30mm
-- Outside Diameter: 72mm
-- Width: 19mm
-- Weight: 0.33kg">复制</button>
+- Bore Size: 40mm
+- Outside Diameter: 90mm
+- Width: 33mm
+- Weight: 0.92kg">复制</button>
                   </div>
                   <pre>商品属性：
-- Model Number: 7306
-- Type: Angular Contact Ball Bearing
+- Model Number: 22308
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 30mm
-- Outside Diameter: 72mm
-- Width: 19mm
-- Weight: 0.33kg</pre>
+- Bore Size: 40mm
+- Outside Diameter: 90mm
+- Width: 33mm
+- Weight: 0.92kg</pre>
                 </div>
                 
                 <div class="module">
                   <div class="module-head">
                     <h3>价格建议</h3>
                     <button class="copy-btn" data-copy="价格建议：
-- Reference Price: 2.10
-- Suggested Listing Price: 2.52
+- Reference Price: 6.10
+- Suggested Listing Price: 7.32
 - MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>价格建议：
-- Reference Price: 2.10
-- Suggested Listing Price: 2.52
+- Reference Price: 6.10
+- Suggested Listing Price: 7.32
 - MOQ: 100 pcs</pre>
                 </div>
                 
@@ -488,110 +519,156 @@ Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome St
                   <div class="module-head">
                     <h3>主图生成提示词</h3>
                     <button class="copy-btn" data-copy="主图生成提示词：
-Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>主图生成提示词：
-Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
                 </div>
                 
             </section>
             
     </div>
   </div>
+  <div id="toast" class="toast">已复制</div>
   <script>
     const allText = `标题：
-1205 Self-aligning Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Equipment
+Ready Stock 22210 22205 22206 22207 22208 22209 22211 22212 22213 Spherical Roller Bearing Chrome Steel for Mining Machinery
 
 副标题：
-1205 ready for wholesale supply with Chrome Steel for Industrial Equipment stable quality OEM support export packing
+22210, 22205, 22206, 22207, 22208, 22209, 22211 available for wholesale supply with stable quality OEM support and export
 
 商品关键词：
-1205, self-aligning ball bearing, double row ball bearing, industrial bearing, machinery bearing, conveyor bearing, equipment bearing, factory supply bearing, wholesale bearing, OEM bearing, 1205 bearing, 1205 Self-aligning Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase, export bearing supplier
+22210 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22210, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22210 Spherical Roller Bearing
 
 商品属性：
-- Model Number: 1205
-- Type: Self-aligning Ball Bearing
+- Model Number: 22210
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.14kg
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg
 
 价格建议：
-- Reference Price: 1.20
-- Suggested Listing Price: 1.44
+- Reference Price: 5.80
+- Suggested Listing Price: 6.96
 - MOQ: 100 pcs
 
 主图生成提示词：
-Bright product photography of 1205 Self-aligning Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
 
 
 标题：
-7205 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for High Speed Machinery
+Direct Factory 22212 22205 22206 22207 22208 22209 22210 22211 22213 Spherical Roller Bearing Open for Transmission Equipment
 
 副标题：
-7205 ready for wholesale supply with Chrome Steel for High Speed Machinery stable quality OEM support export packing
+22212, 22205, 22206, 22207, 22208, 22209, 22210 available for wholesale supply with stable quality OEM support and export
 
 商品关键词：
-7205, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7205 bearing, 7205 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+22212 bearing, 22205 bearing, 22206 bearing, 22207 bearing, 22208 bearing, 22209 bearing, 22212, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22212 Spherical Roller Bearing
 
 商品属性：
-- Model Number: 7205
-- Type: Angular Contact Ball Bearing
+- Model Number: 22212
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 25mm
-- Outside Diameter: 52mm
-- Width: 15mm
-- Weight: 0.13kg
+- Bore Size: 60mm
+- Outside Diameter: 110mm
+- Width: 28mm
+- Weight: 1.25kg
 
 价格建议：
-- Reference Price: 1.50
-- Suggested Listing Price: 1.80
+- Reference Price: 7.40
+- Suggested Listing Price: 8.88
 - MOQ: 100 pcs
 
 主图生成提示词：
-Bright product photography of 7205 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
 
 
 标题：
-7306 Angular Contact Ball Bearing Chrome Steel Open High Quality High Precision Bearing for Industrial Pumps Wholesale Supply
+22308 22210 22211 22212 22213 22309 22310 22311 22312 22313 22205 Spherical Roller Bearing Open for Vibration Screen Machinery
 
 副标题：
-7306 ready for wholesale supply with Chrome Steel for Industrial Pump Equipment stable quality OEM support export packing
+22308, 22210, 22211, 22212, 22213, 22309, 22310 bearings for Vibration Screen Machinery with OEM support and export packing
 
 商品关键词：
-7306, angular contact ball bearing, high speed bearing, precision ball bearing, machine tool bearing, motor bearing, industrial machinery bearing, factory supply bearing, wholesale bearing, OEM bearing, 7306 bearing, 7306 Angular Contact Ball Bearing, industrial bearing manufacturer, china bearing supplier, customized bearing service, bulk bearing purchase
+22308 bearing, 22210 bearing, 22211 bearing, 22212 bearing, 22213 bearing, 22309 bearing, 22308, spherical roller bearing, heavy load roller bearing, double row roller bearing, mining machinery bearing, vibration screen bearing, transmission equipment bearing, factory supply roller bearing, wholesale roller bearing, OEM roller bearing, 22308 Spherical Roller Bearing
 
 商品属性：
-- Model Number: 7306
-- Type: Angular Contact Ball Bearing
+- Model Number: 22308
+- Type: Spherical Roller Bearing
 - Structure: Open
 - Material: Chrome Steel
-- Bore Size: 30mm
-- Outside Diameter: 72mm
-- Width: 19mm
-- Weight: 0.33kg
+- Bore Size: 40mm
+- Outside Diameter: 90mm
+- Width: 33mm
+- Weight: 0.92kg
 
 价格建议：
-- Reference Price: 2.10
-- Suggested Listing Price: 2.52
+- Reference Price: 6.10
+- Suggested Listing Price: 7.32
 - MOQ: 100 pcs
 
 主图生成提示词：
-Bright product photography of 7306 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
-    async function copyText(text) {
+Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
+    const toast = document.getElementById("toast");
+    let toastTimer = null;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      if (toastTimer) {
+        clearTimeout(toastTimer);
+      }
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1100);
+    }
+
+    function markCopied(button) {
+      if (!button) {
+        showToast("已复制");
+        return;
+      }
+      const originalText = button.dataset.originalText || button.textContent;
+      button.dataset.originalText = originalText;
+      button.textContent = "已复制";
+      showToast("已复制");
+      setTimeout(() => {
+        button.textContent = originalText;
+      }, 1000);
+    }
+
+    function fallbackCopyText(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return success;
+    }
+
+    async function copyText(text, button = null) {
       try {
         await navigator.clipboard.writeText(text);
-        alert("复制成功");
+        markCopied(button);
       } catch (error) {
-        alert("复制失败，请手动复制。");
+        if (fallbackCopyText(text)) {
+          markCopied(button);
+          return;
+        }
+        showToast("复制失败");
       }
     }
-    document.getElementById("copy-all").addEventListener("click", () => copyText(allText));
+    document.getElementById("copy-all").addEventListener("click", (event) => copyText(allText, event.currentTarget));
     document.querySelectorAll(".copy-btn").forEach((button) => {
-      button.addEventListener("click", () => copyText(button.dataset.copy));
+      button.addEventListener("click", () => copyText(button.dataset.copy, button));
     });
   </script>
 </body>
