@@ -6,15 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #f7efe5;
-      --bg-2: #fff8f0;
-      --paper: rgba(255, 252, 247, 0.96);
+      --bg: #f7efe7;
+      --bg-2: #fff8f1;
+      --paper: rgba(255, 253, 249, 0.96);
       --ink: #1f2430;
       --muted: #6b6f79;
-      --line: rgba(123, 98, 78, 0.16);
+      --line: rgba(123, 98, 78, 0.14);
       --hero: #0d6f64;
       --hero-2: #f08c4a;
-      --shadow: 0 22px 60px rgba(68, 43, 18, 0.10);
+      --hero-3: #f2c889;
+      --shadow: 0 26px 70px rgba(68, 43, 18, 0.10);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -23,34 +24,46 @@
       color: var(--ink);
       font-family: "Trebuchet MS", "PingFang SC", "Microsoft YaHei", sans-serif;
       background:
-        radial-gradient(circle at top left, rgba(255,255,255,0.92), transparent 28%),
+        radial-gradient(circle at top left, rgba(255,255,255,0.92), transparent 24%),
         radial-gradient(circle at right top, rgba(255,201,160,0.36), transparent 24%),
-        linear-gradient(180deg, #f6eadc 0%, #f8f1e7 46%, #f4ede4 100%);
+        linear-gradient(180deg, #fff4e8 0%, #f7efe7 42%, #f1e8df 100%);
       min-height: 100vh;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
     }
     .float-blob {
       position: fixed;
       z-index: 0;
       border-radius: 999px;
-      filter: blur(18px);
-      opacity: 0.45;
+      filter: blur(22px);
+      opacity: 0.42;
       pointer-events: none;
-      animation: drift 10s ease-in-out infinite alternate;
+      animation: drift 12s ease-in-out infinite alternate;
     }
     .blob-a {
-      width: 180px;
-      height: 180px;
-      left: -30px;
-      top: 90px;
+      width: 210px;
+      height: 210px;
+      left: -40px;
+      top: 60px;
       background: rgba(240, 140, 74, 0.22);
     }
     .blob-b {
-      width: 220px;
-      height: 220px;
-      right: -60px;
-      top: 260px;
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      top: 220px;
       background: rgba(13, 111, 100, 0.16);
-      animation-duration: 13s;
+      animation-duration: 15s;
+    }
+    .blob-c {
+      width: 170px;
+      height: 170px;
+      left: 32%;
+      bottom: 80px;
+      background: rgba(123, 110, 230, 0.14);
+      animation-duration: 11s;
     }
     .wrap {
       position: relative;
@@ -62,13 +75,13 @@
     .hero {
       position: relative;
       overflow: hidden;
-      margin-bottom: 22px;
-      padding: 28px;
-      border: 1px solid rgba(255,255,255,0.4);
-      border-radius: 30px;
+      margin-bottom: 18px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 34px;
       background:
         radial-gradient(circle at right top, rgba(255,255,255,0.30), transparent 28%),
-        linear-gradient(135deg, rgba(13,111,100,0.96), rgba(17,134,121,0.92) 52%, rgba(240,140,74,0.92));
+        linear-gradient(135deg, rgba(13,111,100,0.98), rgba(17,134,121,0.95) 50%, rgba(240,140,74,0.93));
       color: #fffaf4;
       box-shadow: var(--shadow);
     }
@@ -77,13 +90,24 @@
       position: absolute;
       inset: 0;
       background:
-        linear-gradient(130deg, transparent 0 58%, rgba(255,255,255,0.12) 58% 64%, transparent 64% 100%);
+        linear-gradient(130deg, transparent 0 56%, rgba(255,255,255,0.12) 56% 64%, transparent 64% 100%);
       pointer-events: none;
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      right: -90px;
+      top: -100px;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.12);
     }
     .hero-top {
       display: flex;
       justify-content: space-between;
-      gap: 16px;
+      gap: 18px;
       align-items: flex-start;
       flex-wrap: wrap;
     }
@@ -94,18 +118,18 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       padding: 8px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.16);
       font-size: 13px;
-      font-weight: 700;
-      letter-spacing: 0.04em;
+      font-weight: 800;
+      letter-spacing: 0.06em;
     }
     h1 {
       margin: 0 0 12px;
       font-size: clamp(32px, 5vw, 54px);
-      line-height: 1.04;
+      line-height: 1.06;
       letter-spacing: -0.04em;
     }
     .sub {
@@ -119,16 +143,23 @@
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
     .pill {
       padding: 9px 14px;
       border-radius: 999px;
       background: rgba(255,255,255,0.16);
-      border: 1px solid rgba(255,255,255,0.22);
+      border: 1px solid rgba(255,255,255,0.20);
       font-size: 13px;
-      font-weight: 700;
+      font-weight: 800;
       backdrop-filter: blur(6px);
+    }
+    .hero-bottom {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 18px;
+      margin-top: 12px;
+      align-items: stretch;
     }
     .toolbar {
       display: flex;
@@ -152,23 +183,53 @@
       box-shadow: 0 16px 30px rgba(13, 111, 100, 0.24);
       filter: saturate(1.06);
     }
+    button:active {
+      transform: translateY(0) scale(0.99);
+    }
     button.big {
       background: linear-gradient(135deg, #d16f30, #f08c4a);
       box-shadow: 0 14px 28px rgba(209, 111, 48, 0.24);
       white-space: nowrap;
     }
+    .quick-panel,
     .hero-side {
-      min-width: 250px;
       padding: 18px;
       border-radius: 24px;
       background: rgba(255,255,255,0.12);
       border: 1px solid rgba(255,255,255,0.18);
       backdrop-filter: blur(8px);
     }
+    .quick-panel-title,
     .hero-side-title {
       margin: 0 0 10px;
       font-size: 15px;
+      font-weight: 800;
+    }
+    .quick-panel-sub {
+      margin: 0 0 12px;
+      color: rgba(255,250,244,0.86);
+      font-size: 13px;
+      line-height: 1.7;
+    }
+    .nav-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .nav-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      font-size: 13px;
       font-weight: 700;
+      transition: transform 0.16s ease, background 0.16s ease;
+    }
+    .nav-chip:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.20);
     }
     .hero-side ul {
       margin: 0;
@@ -188,11 +249,11 @@
       overflow: hidden;
       padding: 22px;
       border: 1px solid rgba(255,255,255,0.56);
-      border-radius: 28px;
+      border-radius: 30px;
       background:
-        linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,251,245,0.96)),
+        linear-gradient(180deg, rgba(255,255,255,0.88), rgba(255,251,245,0.98)),
         var(--paper);
-      box-shadow: 0 18px 40px rgba(73, 51, 29, 0.08);
+      box-shadow: 0 18px 42px rgba(73, 51, 29, 0.08);
       transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
     .product-card:hover {
@@ -210,13 +271,25 @@
       opacity: 0.36;
       filter: blur(10px);
     }
+    .card-ribbon {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-accent) 16%, white);
+      color: var(--card-accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
     .product-head {
       position: relative;
       display: flex;
       justify-content: space-between;
       align-items: flex-start;
-      gap: 12px;
-      margin-bottom: 16px;
+      gap: 14px;
+      margin-bottom: 14px;
     }
     .eyebrow {
       display: inline-flex;
@@ -230,34 +303,82 @@
       text-transform: uppercase;
     }
     h2 {
-      margin: 0 0 10px;
+      margin: 0 0 12px;
       font-size: 30px;
       line-height: 1;
       letter-spacing: -0.04em;
+    }
+    .product-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .soft-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(14, 124, 113, 0.08);
+      color: #355056;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .coverage-box {
+      margin-bottom: 12px;
+      padding: 14px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(252,246,239,0.92));
+      border: 1px solid rgba(123, 98, 78, 0.10);
     }
     .coverage-label {
       margin-bottom: 6px;
       color: var(--muted);
       font-size: 12px;
-      font-weight: 700;
+      font-weight: 800;
       letter-spacing: 0.04em;
     }
-    .coverage {
-      display: inline-flex;
+    .coverage-chips {
+      display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      color: #3f4b59;
+    }
+    .model-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(123, 98, 78, 0.12);
+      color: #334250;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .card-tip {
+      margin-bottom: 8px;
+      color: #5c6470;
       font-size: 13px;
-      line-height: 1.8;
-      max-width: 420px;
+      line-height: 1.7;
     }
     .module {
       position: relative;
       margin-top: 16px;
       padding: 14px;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(123, 98, 78, 0.12);
       border-radius: 20px;
-      background: rgba(255,255,255,0.55);
+      background: rgba(255,255,255,0.64);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .module:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(73, 51, 29, 0.06);
+      border-color: rgba(14, 124, 113, 0.18);
+    }
+    .module.copied,
+    .product-card.copied,
+    .sticky-inner.copied,
+    .toolbar.copied {
+      box-shadow: 0 0 0 3px rgba(14, 124, 113, 0.12), 0 16px 28px rgba(13, 111, 100, 0.10);
+      border-color: rgba(14, 124, 113, 0.28);
     }
     .module-head {
       display: flex;
@@ -270,16 +391,22 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      flex-wrap: wrap;
     }
     h3 {
       margin: 0;
       color: #21303e;
       font-size: 15px;
     }
+    .module-meta {
+      color: #7b7f88;
+      font-size: 12px;
+      font-weight: 700;
+    }
     pre {
       margin: 0;
-      padding: 14px 16px;
-      border-radius: 16px;
+      padding: 15px 16px;
+      border-radius: 18px;
       background: linear-gradient(180deg, #fffaf5, #fbf5ec);
       white-space: pre-wrap;
       word-break: break-word;
@@ -308,9 +435,9 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      padding: 10px 14px;
+      padding: 11px 14px;
       border-radius: 999px;
-      background: rgba(255,255,255,0.82);
+      background: rgba(255,255,255,0.84);
       border: 1px solid rgba(123, 98, 78, 0.12);
       box-shadow: 0 10px 30px rgba(73, 51, 29, 0.10);
       backdrop-filter: blur(8px);
@@ -320,6 +447,31 @@
       color: #5a5f68;
       font-size: 13px;
       font-weight: 700;
+    }
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 84px;
+      z-index: 50;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0d6f64, #149788);
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 14px 28px rgba(13, 111, 100, 0.22);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
     }
     .toast {
       position: fixed;
@@ -344,7 +496,10 @@
     }
     @keyframes drift {
       from { transform: translateY(0) translateX(0); }
-      to { transform: translateY(24px) translateX(18px); }
+      to { transform: translateY(26px) translateX(18px); }
+    }
+    @media (max-width: 1250px) {
+      .hero-bottom { grid-template-columns: 1fr; }
     }
     @media (max-width: 1180px) {
       .grid { grid-template-columns: 1fr; }
@@ -360,12 +515,19 @@
         width: 100%;
         justify-content: space-between;
       }
+      .nav-grid {
+        flex-direction: column;
+      }
+      .nav-chip {
+        width: 100%;
+      }
     }
   </style>
 </head>
 <body>
   <div class="float-blob blob-a"></div>
   <div class="float-blob blob-b"></div>
+  <div class="float-blob blob-c"></div>
   <div class="wrap">
     <div class="sticky-bar">
       <div class="sticky-inner">
@@ -379,38 +541,50 @@
         <div class="hero-copy">
           <div class="hero-kicker">今日发品复制页</div>
           <h1>把今天的 3 个商品内容整理好了</h1>
-          <div class="sub">7月9日 周四 · 共 3 个商品 · 每个模块都支持一键复制。标题、副标题、关键词、属性、价格建议和主图提示词已经分栏排开，打开就能直接用。</div>
+          <div class="sub">7月9日 周四 · 每个模块都支持一键复制。标题、副标题、关键词、属性、价格建议和主图提示词已经按发品流程分栏排开，打开后就能直接开始干活。</div>
           <div class="hero-stats">
             <div class="pill">复制按钮无弹窗打断</div>
-            <div class="pill">三列分开展示更清楚</div>
+            <div class="pill">先看再复制，节奏更顺</div>
             <div class="pill">手机和电脑都能顺手操作</div>
           </div>
-          <div class="toolbar">
+          <div class="hero-bottom">
+            <div class="quick-panel">
+              <div class="quick-panel-title">快速跳转</div>
+              <div class="quick-panel-sub">先点到对应产品，再复制需要的模块，效率会更高。</div>
+              <div class="nav-grid">
+                <a class="nav-chip" href="#product-1">产品 1 · 22210</a><a class="nav-chip" href="#product-2">产品 2 · 22212</a><a class="nav-chip" href="#product-3">产品 3 · 22308</a>
+              </div>
+            </div>
+            <div class="hero-side">
+              <div class="hero-side-title">使用小提醒</div>
+              <ul>
+                <li>顶部按钮：适合整段复制到聊天或备忘。</li>
+                <li>卡片按钮：适合只复制单个商品。</li>
+                <li>模块按钮：适合只拿标题、关键词或属性。</li>
+              </ul>
+            </div>
+          </div>
+          <div class="toolbar" style="margin-top: 16px;">
             <button id="copy-all-hero">一键复制全部商品内容</button>
           </div>
           <div class="tip">建议流程：先按产品卡片逐个检查，再复制需要的字段到阿里国际站后台。</div>
-        </div>
-        <div class="hero-side">
-          <div class="hero-side-title">使用小提醒</div>
-          <ul>
-            <li>顶部按钮：适合整段复制到聊天或备忘。</li>
-            <li>卡片按钮：适合只复制单个商品。</li>
-            <li>模块按钮：适合只拿标题、关键词或属性。</li>
-          </ul>
         </div>
       </div>
     </section>
 
     <div class="grid">
       
-            <section class="product-card" style="--card-accent:#0e7c71;">
+            <section id="product-1" class="product-card" style="--card-accent:#0e7c71;">
               <div class="card-glow"></div>
+              <div class="card-ribbon">产品 1</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 1</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>22210</h2>
-                  <div class="coverage-label">热门覆盖型号</div>
-                  <div class="coverage">22210 / 22205 / 22206 / 22207 / 22208 / 22209 / 22211 / 22212 / 22213</div>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 9 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" data-copy="标题
 Ready Stock 22210 22205 22206 22207 22208 22209 22211 22212 22213 Spherical Roller Bearing Chrome Steel for Mining Machinery
@@ -439,11 +613,17 @@ Ready Stock 22210 22205 22206 22207 22208 22209 22211 22212 22213 Spherical Roll
 主图生成提示词
 Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22210</span><span class="model-chip">22205</span><span class="model-chip">22206</span><span class="model-chip">22207</span><span class="model-chip">22208</span><span class="model-chip">22209</span><span class="model-chip">22211</span><span class="model-chip">22212</span><span class="model-chip">22213</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
                 <div class="module">
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>标题</h3>
+                      <span class="module-meta">124 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="Ready Stock 22210 22205 22206 22207 22208 22209 22211 22212 22213 Spherical Roller Bearing Chrome Steel for Mining Machinery">复制</button>
                   </div>
@@ -454,6 +634,7 @@ Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>副标题</h3>
+                      <span class="module-meta">121 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="22210 22205 22206 22207 22208 22209 22211 22212 available for wholesale supply with stable quality OEM support and export">复制</button>
                   </div>
@@ -464,6 +645,7 @@ Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>商品关键词</h3>
+                      <span class="module-meta">352 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="22210 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing vibration screen bearing transmission equipment bearing factory supply roller bearing wholesale roller bearing OEM roller bearing 22210 Spherical Roller Bearing">复制</button>
                   </div>
@@ -474,6 +656,7 @@ Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
                     </div>
                     <button class="copy-btn" data-copy="- Model Number: 22210
 - Type: Spherical Roller Bearing
@@ -498,6 +681,7 @@ Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
                     <button class="copy-btn" data-copy="- Reference Price: 5.80
 - Suggested Listing Price: 6.96
@@ -512,6 +696,7 @@ Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
@@ -520,14 +705,17 @@ Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel
                 
             </section>
             
-            <section class="product-card" style="--card-accent:#b8642a;">
+            <section id="product-2" class="product-card" style="--card-accent:#dd7f3b;">
               <div class="card-glow"></div>
+              <div class="card-ribbon">产品 2</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 2</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>22212</h2>
-                  <div class="coverage-label">热门覆盖型号</div>
-                  <div class="coverage">22212 / 22205 / 22206 / 22207 / 22208 / 22209 / 22210 / 22211 / 22213</div>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 9 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" data-copy="标题
 Direct Factory 22212 22205 22206 22207 22208 22209 22210 22211 22213 Spherical Roller Bearing Open for Transmission Equipment
@@ -556,11 +744,17 @@ Direct Factory 22212 22205 22206 22207 22208 22209 22210 22211 22213 Spherical R
 主图生成提示词
 Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22212</span><span class="model-chip">22205</span><span class="model-chip">22206</span><span class="model-chip">22207</span><span class="model-chip">22208</span><span class="model-chip">22209</span><span class="model-chip">22210</span><span class="model-chip">22211</span><span class="model-chip">22213</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
                 <div class="module">
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="Direct Factory 22212 22205 22206 22207 22208 22209 22210 22211 22213 Spherical Roller Bearing Open for Transmission Equipment">复制</button>
                   </div>
@@ -571,6 +765,7 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>副标题</h3>
+                      <span class="module-meta">121 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="22212 22205 22206 22207 22208 22209 22210 22211 available for wholesale supply with stable quality OEM support and export">复制</button>
                   </div>
@@ -581,6 +776,7 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>商品关键词</h3>
+                      <span class="module-meta">352 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="22212 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22212 spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing vibration screen bearing transmission equipment bearing factory supply roller bearing wholesale roller bearing OEM roller bearing 22212 Spherical Roller Bearing">复制</button>
                   </div>
@@ -591,6 +787,7 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>商品属性</h3>
+                      <span class="module-meta">172 字符 · 8 行</span>
                     </div>
                     <button class="copy-btn" data-copy="- Model Number: 22212
 - Type: Spherical Roller Bearing
@@ -615,6 +812,7 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
                     <button class="copy-btn" data-copy="- Reference Price: 7.40
 - Suggested Listing Price: 8.88
@@ -629,6 +827,7 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
@@ -637,14 +836,17 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
                 
             </section>
             
-            <section class="product-card" style="--card-accent:#8f6ccf;">
+            <section id="product-3" class="product-card" style="--card-accent:#7b6ee6;">
               <div class="card-glow"></div>
+              <div class="card-ribbon">产品 3</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 3</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>22308</h2>
-                  <div class="coverage-label">热门覆盖型号</div>
-                  <div class="coverage">22308 / 22210 / 22211 / 22212 / 22213 / 22309 / 22310 / 22311 / 22312 / 22313 / 22205</div>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 11 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" data-copy="标题
 22308 22210 22211 22212 22213 22309 22310 22311 22312 22313 22205 Spherical Roller Bearing Open for Vibration Screen Machinery
@@ -673,11 +875,17 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
 主图生成提示词
 Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22308</span><span class="model-chip">22210</span><span class="model-chip">22211</span><span class="model-chip">22212</span><span class="model-chip">22213</span><span class="model-chip">22309</span><span class="model-chip">22310</span><span class="model-chip">22311</span><span class="model-chip">22312</span><span class="model-chip">22313</span><span class="model-chip">22205</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
                 <div class="module">
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>标题</h3>
+                      <span class="module-meta">126 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="22308 22210 22211 22212 22213 22309 22310 22311 22312 22313 22205 Spherical Roller Bearing Open for Vibration Screen Machinery">复制</button>
                   </div>
@@ -688,6 +896,7 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>副标题</h3>
+                      <span class="module-meta">123 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="22308 22210 22211 22212 22213 22309 22310 22311 bearings for Vibration Screen Machinery with OEM support and export packing">复制</button>
                   </div>
@@ -698,6 +907,7 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>商品关键词</h3>
+                      <span class="module-meta">352 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="22308 bearing 22210 bearing 22211 bearing 22212 bearing 22213 bearing 22309 bearing 22308 spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing vibration screen bearing transmission equipment bearing factory supply roller bearing wholesale roller bearing OEM roller bearing 22308 Spherical Roller Bearing">复制</button>
                   </div>
@@ -708,6 +918,7 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
                     </div>
                     <button class="copy-btn" data-copy="- Model Number: 22308
 - Type: Spherical Roller Bearing
@@ -732,6 +943,7 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
                     <button class="copy-btn" data-copy="- Reference Price: 6.10
 - Suggested Listing Price: 7.32
@@ -746,6 +958,7 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
                   <div class="module-head">
                     <div class="module-title-wrap">
                       <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
                     </div>
                     <button class="copy-btn" data-copy="Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
@@ -756,6 +969,7 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
             
     </div>
   </div>
+  <button id="back-top" class="back-top" aria-label="返回顶部">↑</button>
   <div id="toast" class="toast">已复制</div>
   <script>
     const allText = `产品 1｜22210
@@ -856,6 +1070,7 @@ Bright product photography of 22212 Spherical Roller Bearing, Open, Chrome Steel
 主图生成提示词
 Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
     const toast = document.getElementById("toast");
+    const backTopButton = document.getElementById("back-top");
     let toastTimer = null;
 
     function showToast(message) {
@@ -874,12 +1089,14 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
         showToast("已复制");
         return;
       }
+      button.closest(".module, .product-card, .sticky-inner, .toolbar")?.classList?.add("copied");
       const originalText = button.dataset.originalText || button.textContent;
       button.dataset.originalText = originalText;
       button.textContent = "已复制";
       showToast("已复制");
       setTimeout(() => {
         button.textContent = originalText;
+        button.closest(".module, .product-card, .sticky-inner, .toolbar")?.classList?.remove("copied");
       }, 1000);
     }
 
@@ -913,6 +1130,16 @@ Bright product photography of 22308 Spherical Roller Bearing, Open, Chrome Steel
     document.getElementById("copy-all-hero").addEventListener("click", (event) => copyText(allText, event.currentTarget));
     document.querySelectorAll(".copy-btn").forEach((button) => {
       button.addEventListener("click", () => copyText(button.dataset.copy, button));
+    });
+    backTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 320) {
+        backTopButton.classList.add("show");
+      } else {
+        backTopButton.classList.remove("show");
+      }
     });
   </script>
 </body>
