@@ -6,16 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     :root {
-      --bg: #f8fafc;
-      --surface: #ffffff;
-      --surface-soft: #f1f5f9;
-      --ink: #0f172a;
-      --muted: #64748b;
-      --line: #e2e8f0;
-      --primary: #1e3a5f;
-      --accent: #059669;
-      --accent-strong: #047857;
-      --shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
+      --bg: #f7efe7;
+      --paper: rgba(255, 253, 249, 0.96);
+      --ink: #151922;
+      --muted: #424956;
+      --line: rgba(80, 62, 47, 0.18);
+      --hero: #0d6f64;
+      --hero-2: #f08c4a;
+      --shadow: 0 26px 70px rgba(68, 43, 18, 0.10);
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -23,7 +21,10 @@
       margin: 0;
       color: var(--ink);
       font-family: "Fira Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      background: var(--bg);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.92), transparent 24%),
+        radial-gradient(circle at right top, rgba(255,201,160,0.36), transparent 24%),
+        linear-gradient(180deg, #fff4e8 0%, #f7efe7 42%, #f1e8df 100%);
       min-height: 100vh;
       overscroll-behavior: contain;
     }
@@ -36,224 +37,333 @@
       outline-offset: 3px;
     }
     .wrap {
+      position: relative;
+      z-index: 1;
       max-width: 1440px;
       margin: 0 auto;
-      padding: 16px 16px 56px;
+      padding: 28px 18px 72px;
     }
-    .topbar {
-      position: sticky;
-      top: 0;
-      z-index: 20;
-      display: grid;
-      grid-template-columns: minmax(220px, 1fr) auto;
+    .float-blob {
+      position: fixed;
+      z-index: 0;
+      border-radius: 999px;
+      filter: blur(22px);
+      opacity: 0.32;
+      pointer-events: none;
+    }
+    .blob-a {
+      width: 210px;
+      height: 210px;
+      left: -40px;
+      top: 60px;
+      background: rgba(240, 140, 74, 0.22);
+    }
+    .blob-b {
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      top: 220px;
+      background: rgba(13, 111, 100, 0.16);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 18px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at right top, rgba(255,255,255,0.30), transparent 28%),
+        linear-gradient(135deg, rgba(13,111,100,0.98), rgba(17,134,121,0.95) 50%, rgba(240,140,74,0.93));
+      color: #fffaf4;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(130deg, transparent 0 56%, rgba(255,255,255,0.12) 56% 64%, transparent 64% 100%);
+      pointer-events: none;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+    }
+    .hero-kicker {
+      display: inline-flex;
       align-items: center;
-      gap: 12px;
-      margin: 0 0 14px;
-      padding: 12px;
-      border: 1px solid rgba(226, 232, 240, 0.82);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.92);
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
-      backdrop-filter: blur(12px);
-    }
-    .page-title {
-      display: flex;
-      align-items: baseline;
-      gap: 12px;
-      flex-wrap: wrap;
+      margin-bottom: 12px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
     }
     h1 {
-      margin: 0;
-      font-size: 22px;
-      line-height: 1.2;
-      letter-spacing: 0;
-      color: var(--primary);
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: #fffaf4;
     }
-    .meta {
-      color: var(--muted);
-      font-size: 13px;
+    .sub {
+      max-width: 840px;
+      margin-bottom: 18px;
+      color: rgba(255,250,244,0.92);
+      font-size: 16px;
+      line-height: 1.85;
       font-weight: 600;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      font-size: 13px;
+      font-weight: 800;
+      backdrop-filter: blur(6px);
+    }
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
     }
     button {
       border: 0;
       min-height: 44px;
-      border-radius: 8px;
-      padding: 0 14px;
-      background: var(--accent);
+      border-radius: 999px;
+      padding: 11px 18px;
+      background: linear-gradient(135deg, #0d6f64, #149788);
       color: #fff;
       font-size: 14px;
-      font-weight: 800;
+      font-weight: 700;
       cursor: pointer;
       touch-action: manipulation;
-      transition: background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+      box-shadow: 0 12px 24px rgba(13, 111, 100, 0.18);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
     }
     button:hover {
-      background: var(--accent-strong);
-      box-shadow: 0 8px 18px rgba(5, 150, 105, 0.22);
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 16px 30px rgba(13, 111, 100, 0.24);
+      filter: saturate(1.06);
     }
     button:active {
-      transform: translateY(1px);
+      transform: translateY(0) scale(0.99);
     }
-    button svg {
-      width: 16px;
-      height: 16px;
-      margin-right: 6px;
-      vertical-align: -3px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 2;
-      stroke-linecap: round;
-      stroke-linejoin: round;
-    }
-    .copy-all {
+    button.big {
+      background: linear-gradient(135deg, #d16f30, #f08c4a);
+      box-shadow: 0 14px 28px rgba(209, 111, 48, 0.24);
       white-space: nowrap;
     }
     .nav-grid {
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 14px;
+      gap: 10px;
+      margin-top: 16px;
     }
     .nav-chip {
       display: inline-flex;
       align-items: center;
-      min-height: 36px;
-      padding: 0 12px;
-      border-radius: 8px;
-      background: var(--surface);
-      border: 1px solid var(--line);
-      color: #334155;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fffaf4;
       font-size: 13px;
-      font-weight: 800;
-      transition: border-color 0.18s ease, color 0.18s ease, background 0.18s ease;
+      font-weight: 700;
+      transition: transform 0.16s ease, background 0.16s ease;
     }
     .nav-chip:hover {
-      border-color: #2563eb;
-      color: #1d4ed8;
-      background: #eff6ff;
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.20);
     }
     .grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 12px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
       align-items: start;
     }
     .product-card {
       position: relative;
-      padding: 14px;
-      border: 1px solid var(--line);
-      border-left: 4px solid var(--card-accent);
-      border-radius: 8px;
-      background: var(--surface);
-      box-shadow: var(--shadow);
-      transition: box-shadow 0.18s ease, border-color 0.18s ease;
+      overflow: hidden;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.56);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,251,245,0.98)), var(--paper);
+      box-shadow: 0 18px 42px rgba(73, 51, 29, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
     }
     .product-card:hover {
-      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.10);
+      transform: translateY(-4px);
+      box-shadow: 0 24px 52px rgba(73, 51, 29, 0.12);
     }
-    .product-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-      margin-bottom: 10px;
+    .card-glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -60px;
+      top: -70px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-accent) 24%, white);
+      opacity: 0.36;
+      filter: blur(10px);
     }
-    .eyebrow {
-      margin-bottom: 4px;
+    .card-ribbon {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-accent) 16%, white);
       color: var(--card-accent);
       font-size: 12px;
       font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .product-head {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--card-accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
     }
     h2 {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.1;
-      letter-spacing: 0;
+      margin: 0 0 12px;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #101827;
+    }
+    .product-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .soft-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(14, 124, 113, 0.08);
+      color: #243842;
+      font-size: 12px;
+      font-weight: 700;
     }
     .coverage-box {
-      margin: 8px 0 10px;
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      background: #f8fafc;
+      margin-bottom: 12px;
+      padding: 14px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(252,246,239,0.92));
+      border: 1px solid rgba(123, 98, 78, 0.10);
     }
-    .coverage-box summary {
-      min-height: 38px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 10px;
-      cursor: pointer;
-      color: var(--muted);
+    .coverage-label {
+      margin-bottom: 6px;
+      color: #303946;
+      font-size: 12px;
       font-weight: 800;
-      font-size: 13px;
+      letter-spacing: 0.04em;
     }
     .coverage-chips {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      padding: 0 10px 10px;
     }
     .model-chip {
       display: inline-flex;
       align-items: center;
-      padding: 4px 8px;
-      border-radius: 6px;
-      background: #ffffff;
-      border: 1px solid var(--line);
-      color: #334250;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(123, 98, 78, 0.12);
+      color: #17212f;
       font-size: 12px;
       font-weight: 700;
     }
+    .card-tip {
+      margin-bottom: 8px;
+      color: #27313f;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 600;
+    }
     .module {
-      margin-top: 10px;
-      padding-top: 10px;
-      border-top: 1px solid var(--line);
+      position: relative;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid rgba(123, 98, 78, 0.12);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.68);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
     .module:hover {
-      border-top-color: #cbd5e1;
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(73, 51, 29, 0.06);
+      border-color: rgba(14, 124, 113, 0.18);
     }
     .module.copied,
     .product-card.copied,
-    .topbar.copied {
-      box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.14), var(--shadow);
+    .toolbar.copied {
+      box-shadow: 0 0 0 3px rgba(14, 124, 113, 0.12), 0 16px 28px rgba(13, 111, 100, 0.10);
+      border-color: rgba(14, 124, 113, 0.28);
     }
     .module-head {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      gap: 8px;
-      margin-bottom: 6px;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .module-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
     }
     h3 {
       margin: 0;
-      color: var(--primary);
+      color: #151922;
       font-size: 15px;
     }
-    .module-actions {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      flex-shrink: 0;
-    }
     .module-meta {
-      color: var(--muted);
+      color: #4b5563;
       font-size: 12px;
-      font-weight: 800;
+      font-weight: 700;
     }
     pre {
       margin: 0;
       max-height: 190px;
       overflow: auto;
-      padding: 10px;
-      border-radius: 8px;
-      background: #f8fafc;
+      padding: 15px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffaf5, #fbf5ec);
       white-space: pre-wrap;
       word-break: break-word;
-      line-height: 1.65;
+      line-height: 1.8;
       font-size: 14px;
-      color: #1f2937;
+      color: #111827;
       font-family: "Fira Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
-      border: 1px solid #e5e7eb;
+      border: 1px dashed rgba(13,111,100,0.14);
     }
     .back-top {
       position: fixed;
@@ -262,11 +372,11 @@
       z-index: 50;
       width: 48px;
       height: 48px;
-      border-radius: 8px;
+      border-radius: 50%;
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      background: var(--primary);
+      background: linear-gradient(135deg, #0d6f64, #149788);
       color: #fff;
       font-size: 18px;
       box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
@@ -285,8 +395,8 @@
       right: 22px;
       bottom: 22px;
       padding: 12px 16px;
-      border-radius: 8px;
-      background: #0f172a;
+      border-radius: 999px;
+      background: rgba(13, 111, 100, 0.96);
       color: #fff;
       font-size: 14px;
       font-weight: 700;
@@ -302,23 +412,17 @@
       transform: translateY(0);
     }
     @media (max-width: 1180px) {
-      .grid { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
     @media (max-width: 760px) {
-      .wrap { padding: 12px 10px 54px; }
-      .topbar {
-        grid-template-columns: 1fr;
-        align-items: stretch;
-      }
-      .page-title {
-        display: block;
-      }
-      h1 { font-size: 20px; }
-      .copy-all { width: 100%; }
+      .wrap { padding: 18px 14px 54px; }
+      .hero { padding: 22px; border-radius: 24px; }
+      h1 { font-size: 32px; }
       .nav-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        flex-direction: column;
       }
+      .nav-chip { width: 100%; }
+      .grid { grid-template-columns: 1fr; }
       .product-head {
         align-items: flex-start;
         flex-direction: column;
@@ -330,10 +434,6 @@
         align-items: flex-start;
         flex-direction: column;
       }
-      .module-actions {
-        width: 100%;
-        justify-content: space-between;
-      }
     }
     @media (prefers-reduced-motion: reduce) {
       * {
@@ -344,38 +444,50 @@
   </style>
 </head>
 <body>
+  <div class="float-blob blob-a"></div>
+  <div class="float-blob blob-b"></div>
   <div class="wrap">
-    <header class="topbar">
-      <div class="page-title">
-        <h1>今日发品复制页</h1>
-        <span class="meta">7月10日 周五 · 5 个商品</span>
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-kicker">今日发品复制页</div>
+        <h1>把今天的 6 个商品内容整理好了</h1>
+        <div class="sub">7月10日 周五 · 标题、副标题、关键词、属性、价格建议和主图提示词已经按产品分栏排开。每个模块都能一键复制。</div>
+        <div class="hero-stats">
+          <div class="pill">一行展示 3 个商品</div>
+          <div class="pill">复制按钮无弹窗打断</div>
+          <div class="pill">深色文字更清楚</div>
+        </div>
+        <div class="nav-grid" aria-label="产品快速跳转">
+          <a class="nav-chip" href="#product-1">产品 1 · 7009</a><a class="nav-chip" href="#product-2">产品 2 · 7010</a><a class="nav-chip" href="#product-3">产品 3 · 7012</a><a class="nav-chip" href="#product-4">产品 4 · 7015</a><a class="nav-chip" href="#product-5">产品 5 · 7204</a><a class="nav-chip" href="#product-6">产品 6 · 7206</a>
+        </div>
+        <div class="toolbar">
+          <button id="copy-all-hero" title="复制全部商品内容" aria-label="复制全部商品内容">一键复制全部商品内容</button>
+        </div>
       </div>
-      <button id="copy-all-hero" class="copy-all" title="复制全部商品内容" aria-label="复制全部商品内容">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-        全部复制
-      </button>
-    </header>
-
-    <nav class="nav-grid" aria-label="产品快速跳转">
-      <a class="nav-chip" href="#product-1">P1 7009</a><a class="nav-chip" href="#product-2">P2 7010</a><a class="nav-chip" href="#product-3">P3 7012</a><a class="nav-chip" href="#product-4">P4 7015</a><a class="nav-chip" href="#product-5">P5 7204</a>
-    </nav>
+    </section>
 
     <div class="grid">
       
-            <section id="product-1" class="product-card" style="--card-accent:#2563eb;">
+            <section id="product-1" class="product-card" style="--card-accent:#0e7c71;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 1</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 1</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>7009</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 12 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
-Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7207 Angular Contact Ball Bearing Open for High Speed
+Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7206 Angular Contact Ball Bearing Open for High Speed
 
 副标题
 7009 C 7005C AC 7006 7007 7008 7010 7012 7015 7203 7204 bearings for High Speed Machinery with OEM support and export packing
 
 商品关键词
-7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing export supply
+7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7009
@@ -393,75 +505,61 @@ Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7207 Ang
 - MOQ: 100 pcs
 
 主图生成提示词
-Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                  整单复制
-                </button>
+Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
-              <details class="coverage-box">
-                <summary>热门覆盖型号 <span>12</span></summary>
-                <div class="coverage-chips"><span class="model-chip">7009</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7010</span><span class="model-chip">7012</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7204</span><span class="model-chip">7205</span><span class="model-chip">7207</span></div>
-              </details>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">7009</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7010</span><span class="model-chip">7012</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7204</span><span class="model-chip">7205</span><span class="model-chip">7206</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">125 字符</span>
-                      <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7207 Angular Contact Ball Bearing Open for High Speed">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7206 Angular Contact Ball Bearing Open for High Speed">复制</button>
                   </div>
-                  <pre>Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7207 Angular Contact Ball Bearing Open for High Speed</pre>
-                </section>
+                  <pre>Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7206 Angular Contact Ball Bearing Open for High Speed</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>副标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">125 字符</span>
-                      <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7009 C 7005C AC 7006 7007 7008 7010 7012 7015 7203 7204 bearings for High Speed Machinery with OEM support and export packing">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7009 C 7005C AC 7006 7007 7008 7010 7012 7015 7203 7204 bearings for High Speed Machinery with OEM support and export packing">复制</button>
                   </div>
                   <pre>7009 C 7005C AC 7006 7007 7008 7010 7012 7015 7203 7204 bearings for High Speed Machinery with OEM support and export packing</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品关键词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">382 字符</span>
-                      <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing export supply">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">368 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing">复制</button>
                   </div>
-                  <pre>7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing export supply</pre>
-                </section>
+                  <pre>7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品属性</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">174 字符</span>
-                      <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7009
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">174 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7009
 - Type: Angular Contact Ball Bearing
 - Structure: Open
 - Material: Chrome Steel
 - Bore Size: 45mm
 - Outside Diameter: 75mm
 - Width: 16mm
-- Weight: 0.25kg">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
-                    </div>
+- Weight: 0.25kg">复制</button>
                   </div>
                   <pre>- Model Number: 7009
 - Type: Angular Contact Ball Bearing
@@ -471,56 +569,56 @@ Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome St
 - Outside Diameter: 75mm
 - Width: 16mm
 - Weight: 0.25kg</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>价格建议</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">70 字符</span>
-                      <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 2.25
-- Suggested Listing Price: 2.70
-- MOQ: 100 pcs">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 2.25
+- Suggested Listing Price: 2.70
+- MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>- Reference Price: 2.25
 - Suggested Listing Price: 2.70
 - MOQ: 100 pcs</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>主图生成提示词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">253 字符</span>
-                      <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">253 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
-                </section>
+                </div>
                 
             </section>
             
-            <section id="product-2" class="product-card" style="--card-accent:#059669;">
+            <section id="product-2" class="product-card" style="--card-accent:#dd7f3b;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 2</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 2</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>7010</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 13 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
-7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool
+7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool
 
 副标题
 7010 C 7005C AC 7006 7007 7008 7009 7012 7015 7203 7204 available for wholesale supply with stable quality OEM support and
 
 商品关键词
-7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing export supply
+7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7010
@@ -538,75 +636,61 @@ Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome St
 - MOQ: 100 pcs
 
 主图生成提示词
-Bright product photography of 7010 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                  整单复制
-                </button>
+Bright product photography of 7010 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
-              <details class="coverage-box">
-                <summary>热门覆盖型号 <span>13</span></summary>
-                <div class="coverage-chips"><span class="model-chip">7010</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7012</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7204</span><span class="model-chip">7205</span><span class="model-chip">7207</span><span class="model-chip">7208</span></div>
-              </details>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">7010</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7012</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7204</span><span class="model-chip">7205</span><span class="model-chip">7206</span><span class="model-chip">7207</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">123 字符</span>
-                      <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">123 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool">复制</button>
                   </div>
-                  <pre>7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool</pre>
-                </section>
+                  <pre>7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>副标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">122 字符</span>
-                      <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7010 C 7005C AC 7006 7007 7008 7009 7012 7015 7203 7204 available for wholesale supply with stable quality OEM support and">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7010 C 7005C AC 7006 7007 7008 7009 7012 7015 7203 7204 available for wholesale supply with stable quality OEM support and">复制</button>
                   </div>
                   <pre>7010 C 7005C AC 7006 7007 7008 7009 7012 7015 7203 7204 available for wholesale supply with stable quality OEM support and</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品关键词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">382 字符</span>
-                      <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing export supply">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">368 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing">复制</button>
                   </div>
-                  <pre>7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing export supply</pre>
-                </section>
+                  <pre>7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品属性</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">174 字符</span>
-                      <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7010
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">174 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7010
 - Type: Angular Contact Ball Bearing
 - Structure: Open
 - Material: Chrome Steel
 - Bore Size: 50mm
 - Outside Diameter: 80mm
 - Width: 16mm
-- Weight: 0.28kg">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
-                    </div>
+- Weight: 0.28kg">复制</button>
                   </div>
                   <pre>- Model Number: 7010
 - Type: Angular Contact Ball Bearing
@@ -616,56 +700,56 @@ Bright product photography of 7010 Angular Contact Ball Bearing, Open, Chrome St
 - Outside Diameter: 80mm
 - Width: 16mm
 - Weight: 0.28kg</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>价格建议</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">70 字符</span>
-                      <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 2.60
-- Suggested Listing Price: 3.12
-- MOQ: 100 pcs">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 2.60
+- Suggested Listing Price: 3.12
+- MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>- Reference Price: 2.60
 - Suggested Listing Price: 3.12
 - MOQ: 100 pcs</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>主图生成提示词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">253 字符</span>
-                      <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7010 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">253 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7010 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>Bright product photography of 7010 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
-                </section>
+                </div>
                 
             </section>
             
-            <section id="product-3" class="product-card" style="--card-accent:#7c3aed;">
+            <section id="product-3" class="product-card" style="--card-accent:#4f6fd8;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 3</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 3</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>7012</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 10 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
-Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Export Supply
+Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Industrial
 
 副标题
 7012 C 7005C AC 7006 7007 7008 7009 7010 7015 7203 7204 bearings for Industrial Equipment with OEM support and export packing
 
 商品关键词
-7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing export supply
+7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7012
@@ -683,75 +767,61 @@ Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular
 - MOQ: 100 pcs
 
 主图生成提示词
-Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                  整单复制
-                </button>
+Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
-              <details class="coverage-box">
-                <summary>热门覆盖型号 <span>10</span></summary>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
                 <div class="coverage-chips"><span class="model-chip">7012</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7010</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7204</span></div>
-              </details>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">124 字符</span>
-                      <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Export Supply">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">121 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Industrial">复制</button>
                   </div>
-                  <pre>Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Export Supply</pre>
-                </section>
+                  <pre>Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Industrial</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>副标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">125 字符</span>
-                      <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7012 C 7005C AC 7006 7007 7008 7009 7010 7015 7203 7204 bearings for Industrial Equipment with OEM support and export packing">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7012 C 7005C AC 7006 7007 7008 7009 7010 7015 7203 7204 bearings for Industrial Equipment with OEM support and export packing">复制</button>
                   </div>
                   <pre>7012 C 7005C AC 7006 7007 7008 7009 7010 7015 7203 7204 bearings for Industrial Equipment with OEM support and export packing</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品关键词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">382 字符</span>
-                      <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing export supply">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">368 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing">复制</button>
                   </div>
-                  <pre>7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing export supply</pre>
-                </section>
+                  <pre>7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品属性</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">174 字符</span>
-                      <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7012
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">174 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7012
 - Type: Angular Contact Ball Bearing
 - Structure: Open
 - Material: Chrome Steel
 - Bore Size: 60mm
 - Outside Diameter: 95mm
 - Width: 18mm
-- Weight: 0.46kg">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
-                    </div>
+- Weight: 0.46kg">复制</button>
                   </div>
                   <pre>- Model Number: 7012
 - Type: Angular Contact Ball Bearing
@@ -761,56 +831,56 @@ Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome St
 - Outside Diameter: 95mm
 - Width: 18mm
 - Weight: 0.46kg</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>价格建议</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">70 字符</span>
-                      <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 3.50
-- Suggested Listing Price: 4.20
-- MOQ: 100 pcs">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 3.50
+- Suggested Listing Price: 4.20
+- MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>- Reference Price: 3.50
 - Suggested Listing Price: 4.20
 - MOQ: 100 pcs</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>主图生成提示词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">253 字符</span>
-                      <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">253 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
-                </section>
+                </div>
                 
             </section>
             
-            <section id="product-4" class="product-card" style="--card-accent:#d97706;">
+            <section id="product-4" class="product-card" style="--card-accent:#8b5cf6;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 4</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 4</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>7015</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 13 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
-7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool
+7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool
 
 副标题
 7015 C 7005C AC 7006 7007 7008 7009 7010 7012 7203 7204 available for wholesale supply with stable quality OEM support and
 
 商品关键词
-7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing export supply
+7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7015
@@ -828,75 +898,61 @@ Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome St
 - MOQ: 100 pcs
 
 主图生成提示词
-Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                  整单复制
-                </button>
+Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
-              <details class="coverage-box">
-                <summary>热门覆盖型号 <span>13</span></summary>
-                <div class="coverage-chips"><span class="model-chip">7015</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7010</span><span class="model-chip">7012</span><span class="model-chip">7203</span><span class="model-chip">7204</span><span class="model-chip">7205</span><span class="model-chip">7207</span><span class="model-chip">7208</span></div>
-              </details>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">7015</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7010</span><span class="model-chip">7012</span><span class="model-chip">7203</span><span class="model-chip">7204</span><span class="model-chip">7205</span><span class="model-chip">7206</span><span class="model-chip">7207</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">123 字符</span>
-                      <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">123 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool">复制</button>
                   </div>
-                  <pre>7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool</pre>
-                </section>
+                  <pre>7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>副标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">122 字符</span>
-                      <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7015 C 7005C AC 7006 7007 7008 7009 7010 7012 7203 7204 available for wholesale supply with stable quality OEM support and">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7015 C 7005C AC 7006 7007 7008 7009 7010 7012 7203 7204 available for wholesale supply with stable quality OEM support and">复制</button>
                   </div>
                   <pre>7015 C 7005C AC 7006 7007 7008 7009 7010 7012 7203 7204 available for wholesale supply with stable quality OEM support and</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品关键词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">382 字符</span>
-                      <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing export supply">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">368 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing">复制</button>
                   </div>
-                  <pre>7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing export supply</pre>
-                </section>
+                  <pre>7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品属性</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">175 字符</span>
-                      <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7015
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">175 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7015
 - Type: Angular Contact Ball Bearing
 - Structure: Open
 - Material: Chrome Steel
 - Bore Size: 75mm
 - Outside Diameter: 115mm
 - Width: 20mm
-- Weight: 0.75kg">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
-                    </div>
+- Weight: 0.75kg">复制</button>
                   </div>
                   <pre>- Model Number: 7015
 - Type: Angular Contact Ball Bearing
@@ -906,56 +962,56 @@ Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome St
 - Outside Diameter: 115mm
 - Width: 20mm
 - Weight: 0.75kg</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>价格建议</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">70 字符</span>
-                      <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 5.80
-- Suggested Listing Price: 6.96
-- MOQ: 100 pcs">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 5.80
+- Suggested Listing Price: 6.96
+- MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>- Reference Price: 5.80
 - Suggested Listing Price: 6.96
 - MOQ: 100 pcs</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>主图生成提示词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">253 字符</span>
-                      <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">253 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
-                </section>
+                </div>
                 
             </section>
             
             <section id="product-5" class="product-card" style="--card-accent:#0f766e;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 5</div>
               <div class="product-head">
                 <div>
-                  <div class="eyebrow">产品 5</div>
+                  <div class="eyebrow">今日待发布</div>
                   <h2>7204</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 13 个型号</span>
+                  </div>
                 </div>
                 <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
-7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7207 7208 Angular Contact Ball Bearing Open for High Speed
+7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7206 7207 Angular Contact Ball Bearing Open for High Speed
 
 副标题
 7204 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing
 
 商品关键词
-7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing export supply
+7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7204
@@ -973,75 +1029,61 @@ Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome St
 - MOQ: 100 pcs
 
 主图生成提示词
-Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                  <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                  整单复制
-                </button>
+Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
               </div>
-              <details class="coverage-box">
-                <summary>热门覆盖型号 <span>13</span></summary>
-                <div class="coverage-chips"><span class="model-chip">7204</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7010</span><span class="model-chip">7012</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7205</span><span class="model-chip">7207</span><span class="model-chip">7208</span></div>
-              </details>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">7204</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7010</span><span class="model-chip">7012</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7205</span><span class="model-chip">7206</span><span class="model-chip">7207</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
               
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">121 字符</span>
-                      <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7207 7208 Angular Contact Ball Bearing Open for High Speed">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">121 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7206 7207 Angular Contact Ball Bearing Open for High Speed">复制</button>
                   </div>
-                  <pre>7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7207 7208 Angular Contact Ball Bearing Open for High Speed</pre>
-                </section>
+                  <pre>7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7206 7207 Angular Contact Ball Bearing Open for High Speed</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>副标题</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">125 字符</span>
-                      <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7204 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7204 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing">复制</button>
                   </div>
                   <pre>7204 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品关键词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">382 字符</span>
-                      <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing export supply">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">368 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing">复制</button>
                   </div>
-                  <pre>7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing export supply</pre>
-                </section>
+                  <pre>7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing</pre>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>商品属性</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">174 字符</span>
-                      <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7204
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">174 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7204
 - Type: Angular Contact Ball Bearing
 - Structure: Open
 - Material: Chrome Steel
 - Bore Size: 20mm
 - Outside Diameter: 47mm
 - Width: 14mm
-- Weight: 0.11kg">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
-                    </div>
+- Weight: 0.11kg">复制</button>
                   </div>
                   <pre>- Model Number: 7204
 - Type: Angular Contact Ball Bearing
@@ -1051,39 +1093,164 @@ Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome St
 - Outside Diameter: 47mm
 - Width: 14mm
 - Weight: 0.11kg</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>价格建议</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">70 字符</span>
-                      <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 1.25
-- Suggested Listing Price: 1.50
-- MOQ: 100 pcs">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
                     </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 1.25
+- Suggested Listing Price: 1.50
+- MOQ: 100 pcs">复制</button>
                   </div>
                   <pre>- Reference Price: 1.25
 - Suggested Listing Price: 1.50
 - MOQ: 100 pcs</pre>
-                </section>
+                </div>
                 
-                <section class="module">
+                <div class="module">
                   <div class="module-head">
-                    <h3>主图生成提示词</h3>
-                    <div class="module-actions">
-                      <span class="module-meta">253 字符</span>
-                      <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">
-                        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="9" width="10" height="10" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v1"></path></svg>
-                        复制
-                      </button>
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">253 字符 · 1 行</span>
                     </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
                   </div>
                   <pre>Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
-                </section>
+                </div>
+                
+            </section>
+            
+            <section id="product-6" class="product-card" style="--card-accent:#be123c;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 6</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>7206</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 12 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Hot Sale 7206 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7204 7205 Angular Contact Ball Bearing Open for High Speed
+
+副标题
+7206 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing
+
+商品关键词
+7206 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7206 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7206 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7206 Angular Contact Ball Bearing
+
+商品属性
+- Model Number: 7206
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 16mm
+- Weight: 0.20kg
+
+价格建议
+- Reference Price: 1.80
+- Suggested Listing Price: 2.16
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 7206 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">7206</span><span class="model-chip">7005C</span><span class="model-chip">7006</span><span class="model-chip">7007</span><span class="model-chip">7008</span><span class="model-chip">7009</span><span class="model-chip">7010</span><span class="model-chip">7012</span><span class="model-chip">7015</span><span class="model-chip">7203</span><span class="model-chip">7204</span><span class="model-chip">7205</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Hot Sale 7206 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7204 7205 Angular Contact Ball Bearing Open for High Speed">复制</button>
+                  </div>
+                  <pre>Hot Sale 7206 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7204 7205 Angular Contact Ball Bearing Open for High Speed</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="7206 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing">复制</button>
+                  </div>
+                  <pre>7206 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">368 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="7206 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7206 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7206 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7206 Angular Contact Ball Bearing">复制</button>
+                  </div>
+                  <pre>7206 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7206 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7206 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7206 Angular Contact Ball Bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">174 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 7206
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 16mm
+- Weight: 0.20kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 7206
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 16mm
+- Weight: 0.20kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 1.80
+- Suggested Listing Price: 2.16
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 1.80
+- Suggested Listing Price: 2.16
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">253 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 7206 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 7206 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
                 
             </section>
             
@@ -1095,16 +1262,16 @@ Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome St
     const allText = `产品 1｜7009
 
 热门覆盖型号
-7009 / 7005C / 7006 / 7007 / 7008 / 7010 / 7012 / 7015 / 7203 / 7204 / 7205 / 7207
+7009 / 7005C / 7006 / 7007 / 7008 / 7010 / 7012 / 7015 / 7203 / 7204 / 7205 / 7206
 
 标题
-Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7207 Angular Contact Ball Bearing Open for High Speed
+Hot Sale 7009 C 7005C AC 7006 B 7007 7008 7010 7012 7015 7203 7204 7205 7206 Angular Contact Ball Bearing Open for High Speed
 
 副标题
 7009 C 7005C AC 7006 7007 7008 7010 7012 7015 7203 7204 bearings for High Speed Machinery with OEM support and export packing
 
 商品关键词
-7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing export supply
+7009 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7010 bearing 7009 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7009 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7009 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7009
@@ -1128,16 +1295,16 @@ Bright product photography of 7009 Angular Contact Ball Bearing, Open, Chrome St
 产品 2｜7010
 
 热门覆盖型号
-7010 / 7005C / 7006 / 7007 / 7008 / 7009 / 7012 / 7015 / 7203 / 7204 / 7205 / 7207 / 7208
+7010 / 7005C / 7006 / 7007 / 7008 / 7009 / 7012 / 7015 / 7203 / 7204 / 7205 / 7206 / 7207
 
 标题
-7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool
+7010 C 7005C AC 7006 B 7007 7008 7009 7012 7015 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool
 
 副标题
 7010 C 7005C AC 7006 7007 7008 7009 7012 7015 7203 7204 available for wholesale supply with stable quality OEM support and
 
 商品关键词
-7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing export supply
+7010 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7010 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7010 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7010 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7010
@@ -1164,13 +1331,13 @@ Bright product photography of 7010 Angular Contact Ball Bearing, Open, Chrome St
 7012 / 7005C / 7006 / 7007 / 7008 / 7009 / 7010 / 7015 / 7203 / 7204
 
 标题
-Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Export Supply
+Factory Supply 7012 C 7005C AC 7006 B 7007 7008 7009 7010 7015 7203 7204 Angular Contact Ball Bearing Open for Industrial
 
 副标题
 7012 C 7005C AC 7006 7007 7008 7009 7010 7015 7203 7204 bearings for Industrial Equipment with OEM support and export packing
 
 商品关键词
-7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing export supply
+7012 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7012 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7012 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7012 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7012
@@ -1194,16 +1361,16 @@ Bright product photography of 7012 Angular Contact Ball Bearing, Open, Chrome St
 产品 4｜7015
 
 热门覆盖型号
-7015 / 7005C / 7006 / 7007 / 7008 / 7009 / 7010 / 7012 / 7203 / 7204 / 7205 / 7207 / 7208
+7015 / 7005C / 7006 / 7007 / 7008 / 7009 / 7010 / 7012 / 7203 / 7204 / 7205 / 7206 / 7207
 
 标题
-7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7207 7208 Angular Contact Ball Bearing Open for Machine Tool
+7015 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7203 7204 7205 7206 7207 Angular Contact Ball Bearing Open for Machine Tool
 
 副标题
 7015 C 7005C AC 7006 7007 7008 7009 7010 7012 7203 7204 available for wholesale supply with stable quality OEM support and
 
 商品关键词
-7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing export supply
+7015 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7015 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7015 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7015 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7015
@@ -1227,16 +1394,16 @@ Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome St
 产品 5｜7204
 
 热门覆盖型号
-7204 / 7005C / 7006 / 7007 / 7008 / 7009 / 7010 / 7012 / 7015 / 7203 / 7205 / 7207 / 7208
+7204 / 7005C / 7006 / 7007 / 7008 / 7009 / 7010 / 7012 / 7015 / 7203 / 7205 / 7206 / 7207
 
 标题
-7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7207 7208 Angular Contact Ball Bearing Open for High Speed
+7204 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7205 7206 7207 Angular Contact Ball Bearing Open for High Speed
 
 副标题
 7204 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing
 
 商品关键词
-7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing export supply
+7204 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7204 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7204 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7204 Angular Contact Ball Bearing
 
 商品属性
 - Model Number: 7204
@@ -1254,7 +1421,40 @@ Bright product photography of 7015 Angular Contact Ball Bearing, Open, Chrome St
 - MOQ: 100 pcs
 
 主图生成提示词
-Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
+Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 6｜7206
+
+热门覆盖型号
+7206 / 7005C / 7006 / 7007 / 7008 / 7009 / 7010 / 7012 / 7015 / 7203 / 7204 / 7205
+
+标题
+Hot Sale 7206 C 7005C AC 7006 B 7007 7008 7009 7010 7012 7015 7203 7204 7205 Angular Contact Ball Bearing Open for High Speed
+
+副标题
+7206 C 7005C AC 7006 7007 7008 7009 7010 7012 7015 7203 bearings for High Speed Machinery with OEM support and export packing
+
+商品关键词
+7206 bearing 7005C bearing 7006 bearing 7007 bearing 7008 bearing 7009 bearing 7206 C bearing 7005C AC bearing 7006 B bearing 7007 C3 bearing 7206 angular contact ball bearing high speed bearing precision ball bearing machine tool bearing motor bearing industrial machinery bearing factory supply bearing wholesale bearing OEM bearing 7206 Angular Contact Ball Bearing
+
+商品属性
+- Model Number: 7206
+- Type: Angular Contact Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 16mm
+- Weight: 0.20kg
+
+价格建议
+- Reference Price: 1.80
+- Suggested Listing Price: 2.16
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 7206 Angular Contact Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
     const toast = document.getElementById("toast");
     const backTopButton = document.getElementById("back-top");
     let toastTimer = null;
@@ -1275,14 +1475,14 @@ Bright product photography of 7204 Angular Contact Ball Bearing, Open, Chrome St
         showToast("已复制");
         return;
       }
-      button.closest(".module, .product-card, .topbar")?.classList?.add("copied");
+      button.closest(".module, .product-card, .toolbar")?.classList?.add("copied");
       const originalText = button.dataset.originalText || button.textContent;
       button.dataset.originalText = originalText;
       button.textContent = "已复制";
       showToast("已复制");
       setTimeout(() => {
         button.textContent = originalText;
-        button.closest(".module, .product-card, .topbar")?.classList?.remove("copied");
+        button.closest(".module, .product-card, .toolbar")?.classList?.remove("copied");
       }, 1000);
     }
 
