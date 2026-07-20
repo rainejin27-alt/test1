@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>今日发品复制页｜2026-07-20</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #f7efe7;
+      --paper: rgba(255, 253, 249, 0.96);
+      --ink: #151922;
+      --muted: #424956;
+      --line: rgba(80, 62, 47, 0.18);
+      --hero: #0d6f64;
+      --hero-2: #f08c4a;
+      --shadow: 0 26px 70px rgba(68, 43, 18, 0.10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Fira Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.92), transparent 24%),
+        radial-gradient(circle at right top, rgba(255,201,160,0.36), transparent 24%),
+        linear-gradient(180deg, #fff4e8 0%, #f7efe7 42%, #f1e8df 100%);
+      min-height: 100vh;
+      overscroll-behavior: contain;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    :focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.38);
+      outline-offset: 3px;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 18px 72px;
+    }
+    .float-blob {
+      position: fixed;
+      z-index: 0;
+      border-radius: 999px;
+      filter: blur(22px);
+      opacity: 0.32;
+      pointer-events: none;
+    }
+    .blob-a {
+      width: 210px;
+      height: 210px;
+      left: -40px;
+      top: 60px;
+      background: rgba(240, 140, 74, 0.22);
+    }
+    .blob-b {
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      top: 220px;
+      background: rgba(13, 111, 100, 0.16);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 18px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at right top, rgba(255,255,255,0.30), transparent 28%),
+        linear-gradient(135deg, rgba(13,111,100,0.98), rgba(17,134,121,0.95) 50%, rgba(240,140,74,0.93));
+      color: #fffaf4;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(130deg, transparent 0 56%, rgba(255,255,255,0.12) 56% 64%, transparent 64% 100%);
+      pointer-events: none;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: #fffaf4;
+    }
+    .sub {
+      max-width: 840px;
+      margin-bottom: 18px;
+      color: rgba(255,250,244,0.92);
+      font-size: 16px;
+      line-height: 1.85;
+      font-weight: 600;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      font-size: 13px;
+      font-weight: 800;
+      backdrop-filter: blur(6px);
+    }
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    button {
+      border: 0;
+      min-height: 44px;
+      border-radius: 999px;
+      padding: 11px 18px;
+      background: linear-gradient(135deg, #0d6f64, #149788);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      touch-action: manipulation;
+      box-shadow: 0 12px 24px rgba(13, 111, 100, 0.18);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+    }
+    button:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 16px 30px rgba(13, 111, 100, 0.24);
+      filter: saturate(1.06);
+    }
+    button:active {
+      transform: translateY(0) scale(0.99);
+    }
+    button.big {
+      background: linear-gradient(135deg, #d16f30, #f08c4a);
+      box-shadow: 0 14px 28px rgba(209, 111, 48, 0.24);
+      white-space: nowrap;
+    }
+    .nav-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .nav-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fffaf4;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.16s ease, background 0.16s ease;
+    }
+    .nav-chip:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.20);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.56);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,251,245,0.98)), var(--paper);
+      box-shadow: 0 18px 42px rgba(73, 51, 29, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 52px rgba(73, 51, 29, 0.12);
+    }
+    .card-glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -60px;
+      top: -70px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-accent) 24%, white);
+      opacity: 0.36;
+      filter: blur(10px);
+    }
+    .card-ribbon {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-accent) 16%, white);
+      color: var(--card-accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .product-head {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--card-accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #101827;
+    }
+    .product-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .soft-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(14, 124, 113, 0.08);
+      color: #243842;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .coverage-box {
+      margin-bottom: 12px;
+      padding: 14px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(252,246,239,0.92));
+      border: 1px solid rgba(123, 98, 78, 0.10);
+    }
+    .coverage-label {
+      margin-bottom: 6px;
+      color: #303946;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .coverage-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .model-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(123, 98, 78, 0.12);
+      color: #17212f;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .card-tip {
+      margin-bottom: 8px;
+      color: #27313f;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 600;
+    }
+    .module {
+      position: relative;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid rgba(123, 98, 78, 0.12);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.68);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .module:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(73, 51, 29, 0.06);
+      border-color: rgba(14, 124, 113, 0.18);
+    }
+    .module.copied,
+    .product-card.copied,
+    .toolbar.copied {
+      box-shadow: 0 0 0 3px rgba(14, 124, 113, 0.12), 0 16px 28px rgba(13, 111, 100, 0.10);
+      border-color: rgba(14, 124, 113, 0.28);
+    }
+    .module-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .module-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    h3 {
+      margin: 0;
+      color: #151922;
+      font-size: 15px;
+    }
+    .module-meta {
+      color: #4b5563;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    pre {
+      margin: 0;
+      max-height: 190px;
+      overflow: auto;
+      padding: 15px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffaf5, #fbf5ec);
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.8;
+      font-size: 14px;
+      color: #111827;
+      font-family: "Fira Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      border: 1px dashed rgba(13,111,100,0.14);
+    }
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 84px;
+      z-index: 50;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0d6f64, #149788);
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(13, 111, 100, 0.96);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.20);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 9999;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 1180px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .wrap { padding: 18px 14px 54px; }
+      .hero { padding: 22px; border-radius: 24px; }
+      h1 { font-size: 32px; }
+      .nav-grid {
+        flex-direction: column;
+      }
+      .nav-chip { width: 100%; }
+      .grid { grid-template-columns: 1fr; }
+      .product-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .copy-btn.big {
+        width: 100%;
+      }
+      .module-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="float-blob blob-a"></div>
+  <div class="float-blob blob-b"></div>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-kicker">今日发品复制页</div>
+        <h1>把今天的 6 个商品内容整理好了</h1>
+        <div class="sub">7月20日 周一 · 标题、副标题、关键词、属性、价格建议和主图提示词已经按产品分栏排开。每个模块都能一键复制。</div>
+        <div class="hero-stats">
+          <div class="pill">一行展示 3 个商品</div>
+          <div class="pill">复制按钮无弹窗打断</div>
+          <div class="pill">深色文字更清楚</div>
+        </div>
+        <div class="nav-grid" aria-label="产品快速跳转">
+          <a class="nav-chip" href="#product-1">产品 1 · 608</a><a class="nav-chip" href="#product-2">产品 2 · 6000</a><a class="nav-chip" href="#product-3">产品 3 · 6001</a><a class="nav-chip" href="#product-4">产品 4 · 6002</a><a class="nav-chip" href="#product-5">产品 5 · 6003</a><a class="nav-chip" href="#product-6">产品 6 · 6004</a>
+        </div>
+        <div class="toolbar">
+          <button id="copy-all-hero" title="复制全部商品内容" aria-label="复制全部商品内容">一键复制全部商品内容</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      
+            <section id="product-1" class="product-card" style="--card-accent:#0e7c71;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 1</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>608</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 7 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Motor Machinery 608 ZZ 6000 2RS 6001 RS 6002 6003 6004 6005 Deep Groove Ball Bearing High Speed Wholesale Supply
+
+副标题
+608 ZZ 6000 2RS 6001 6002 6003 6004 6005 bearing range for Skate Motor Small Machinery with wholesale supply
+
+商品关键词
+608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 608 ZZ bearing 6000 2RS bearing 6001 RS bearing 6002 Open bearing 608 skate motor small machinery skate motor small machinery bearing bearing for skate motor small machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing
+
+商品属性
+- Model Number: 608
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 8mm
+- Outside Diameter: 22mm
+- Width: 7mm
+- Weight: 0.012kg
+
+价格建议
+- Reference Price: 0.75
+- Suggested Listing Price: 0.73
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 608 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">608 ZZ</span><span class="model-chip">6000 2RS</span><span class="model-chip">6001 RS</span><span class="model-chip">6002</span><span class="model-chip">6003</span><span class="model-chip">6004</span><span class="model-chip">6005</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">112 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Motor Machinery 608 ZZ 6000 2RS 6001 RS 6002 6003 6004 6005 Deep Groove Ball Bearing High Speed Wholesale Supply">复制</button>
+                  </div>
+                  <pre>Motor Machinery 608 ZZ 6000 2RS 6001 RS 6002 6003 6004 6005 Deep Groove Ball Bearing High Speed Wholesale Supply</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">108 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="608 ZZ 6000 2RS 6001 6002 6003 6004 6005 bearing range for Skate Motor Small Machinery with wholesale supply">复制</button>
+                  </div>
+                  <pre>608 ZZ 6000 2RS 6001 6002 6003 6004 6005 bearing range for Skate Motor Small Machinery with wholesale supply</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">370 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 608 ZZ bearing 6000 2RS bearing 6001 RS bearing 6002 Open bearing 608 skate motor small machinery skate motor small machinery bearing bearing for skate motor small machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing">复制</button>
+                  </div>
+                  <pre>608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 608 ZZ bearing 6000 2RS bearing 6001 RS bearing 6002 Open bearing 608 skate motor small machinery skate motor small machinery bearing bearing for skate motor small machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">168 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 608
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 8mm
+- Outside Diameter: 22mm
+- Width: 7mm
+- Weight: 0.012kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 608
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 8mm
+- Outside Diameter: 22mm
+- Width: 7mm
+- Weight: 0.012kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 0.75
+- Suggested Listing Price: 0.73
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 0.75
+- Suggested Listing Price: 0.73
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">248 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 608 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 608 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-2" class="product-card" style="--card-accent:#dd7f3b;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 2</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>6000</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 9 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+China Supplier Deep Groove Ball Bearing 6000 ZZ 608 2RS 6001 RS 6002 6003 6004 6005 6200 6201 Open for Agricultural Machinery
+
+副标题
+Ready stock 6000 ZZ 608 2RS 6001 6002 6003 6004 6005 6200 for Motor Machinery with wholesale order support
+
+商品关键词
+6000 bearing 608 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 6000 ZZ bearing 608 2RS bearing 6001 RS bearing 6002 Open bearing 6000 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing
+
+商品属性
+- Model Number: 6000
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 10mm
+- Outside Diameter: 26mm
+- Width: 8mm
+- Weight: 0.0178kg
+
+价格建议
+- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6000 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">6000 ZZ</span><span class="model-chip">608 2RS</span><span class="model-chip">6001 RS</span><span class="model-chip">6002</span><span class="model-chip">6003</span><span class="model-chip">6004</span><span class="model-chip">6005</span><span class="model-chip">6200</span><span class="model-chip">6201</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="China Supplier Deep Groove Ball Bearing 6000 ZZ 608 2RS 6001 RS 6002 6003 6004 6005 6200 6201 Open for Agricultural Machinery">复制</button>
+                  </div>
+                  <pre>China Supplier Deep Groove Ball Bearing 6000 ZZ 608 2RS 6001 RS 6002 6003 6004 6005 6200 6201 Open for Agricultural Machinery</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">106 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="Ready stock 6000 ZZ 608 2RS 6001 6002 6003 6004 6005 6200 for Motor Machinery with wholesale order support">复制</button>
+                  </div>
+                  <pre>Ready stock 6000 ZZ 608 2RS 6001 6002 6003 6004 6005 6200 for Motor Machinery with wholesale order support</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">378 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="6000 bearing 608 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 6000 ZZ bearing 608 2RS bearing 6001 RS bearing 6002 Open bearing 6000 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing">复制</button>
+                  </div>
+                  <pre>6000 bearing 608 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 6000 ZZ bearing 608 2RS bearing 6001 RS bearing 6002 Open bearing 6000 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 6000
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 10mm
+- Outside Diameter: 26mm
+- Width: 8mm
+- Weight: 0.0178kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 6000
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 10mm
+- Outside Diameter: 26mm
+- Width: 8mm
+- Weight: 0.0178kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">249 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 6000 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 6000 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-3" class="product-card" style="--card-accent:#4f6fd8;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 3</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>6001</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 11 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Hot Sale Deep Groove Ball Bearing 6001 ZZ 608 2RS 6000 RS 6002 6003 6004 6005 6200 6201 6202 6203 Open for Electric Motors
+
+副标题
+6001 ZZ 608 2RS 6000 6002 6003 6004 6005 6200 6201 6202 6203 6204 bearings for Motor Machinery with factory direct supply
+
+商品关键词
+6001 bearing 608 bearing 6000 bearing 6002 bearing 6003 bearing 6004 bearing 6001 ZZ bearing 608 2RS bearing 6000 RS bearing 6002 Open bearing 6001 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing
+
+商品属性
+- Model Number: 6001
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 12mm
+- Outside Diameter: 28mm
+- Width: 8mm
+- Weight: 0.0195kg
+
+价格建议
+- Reference Price: 0.55
+- Suggested Listing Price: 0.53
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6001 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">6001 ZZ</span><span class="model-chip">608 2RS</span><span class="model-chip">6000 RS</span><span class="model-chip">6002</span><span class="model-chip">6003</span><span class="model-chip">6004</span><span class="model-chip">6005</span><span class="model-chip">6200</span><span class="model-chip">6201</span><span class="model-chip">6202</span><span class="model-chip">6203</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Hot Sale Deep Groove Ball Bearing 6001 ZZ 608 2RS 6000 RS 6002 6003 6004 6005 6200 6201 6202 6203 Open for Electric Motors">复制</button>
+                  </div>
+                  <pre>Hot Sale Deep Groove Ball Bearing 6001 ZZ 608 2RS 6000 RS 6002 6003 6004 6005 6200 6201 6202 6203 Open for Electric Motors</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">121 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="6001 ZZ 608 2RS 6000 6002 6003 6004 6005 6200 6201 6202 6203 6204 bearings for Motor Machinery with factory direct supply">复制</button>
+                  </div>
+                  <pre>6001 ZZ 608 2RS 6000 6002 6003 6004 6005 6200 6201 6202 6203 6204 bearings for Motor Machinery with factory direct supply</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">378 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="6001 bearing 608 bearing 6000 bearing 6002 bearing 6003 bearing 6004 bearing 6001 ZZ bearing 608 2RS bearing 6000 RS bearing 6002 Open bearing 6001 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing">复制</button>
+                  </div>
+                  <pre>6001 bearing 608 bearing 6000 bearing 6002 bearing 6003 bearing 6004 bearing 6001 ZZ bearing 608 2RS bearing 6000 RS bearing 6002 Open bearing 6001 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 6001
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 12mm
+- Outside Diameter: 28mm
+- Width: 8mm
+- Weight: 0.0195kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 6001
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 12mm
+- Outside Diameter: 28mm
+- Width: 8mm
+- Weight: 0.0195kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 0.55
+- Suggested Listing Price: 0.53
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 0.55
+- Suggested Listing Price: 0.53
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">249 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 6001 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 6001 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-4" class="product-card" style="--card-accent:#8b5cf6;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 4</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>6002</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 8 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+6002 ZZ 608 2RS 6000 RS 6001 6003 6004 6005 6200 Deep Groove Ball Bearing Open High Speed for Electric Motors
+
+副标题
+6002 ZZ 608 2RS 6000 6001 6003 6004 6005 6200 Chrome Steel Deep Groove Ball bearings for Electric Motors with export packing
+
+商品关键词
+6002 bearing 608 bearing 6000 bearing 6001 bearing 6003 bearing 6004 bearing 6002 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6002 electric motor machinery electric motor machinery bearing bearing export supply for electric motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing
+
+商品属性
+- Model Number: 6002
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 15mm
+- Outside Diameter: 32mm
+- Width: 9mm
+- Weight: 0.0286kg
+
+价格建议
+- Reference Price: 0.49
+- Suggested Listing Price: 0.48
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6002 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">6002 ZZ</span><span class="model-chip">608 2RS</span><span class="model-chip">6000 RS</span><span class="model-chip">6001</span><span class="model-chip">6003</span><span class="model-chip">6004</span><span class="model-chip">6005</span><span class="model-chip">6200</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">109 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="6002 ZZ 608 2RS 6000 RS 6001 6003 6004 6005 6200 Deep Groove Ball Bearing Open High Speed for Electric Motors">复制</button>
+                  </div>
+                  <pre>6002 ZZ 608 2RS 6000 RS 6001 6003 6004 6005 6200 Deep Groove Ball Bearing Open High Speed for Electric Motors</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">124 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="6002 ZZ 608 2RS 6000 6001 6003 6004 6005 6200 Chrome Steel Deep Groove Ball bearings for Electric Motors with export packing">复制</button>
+                  </div>
+                  <pre>6002 ZZ 608 2RS 6000 6001 6003 6004 6005 6200 Chrome Steel Deep Groove Ball bearings for Electric Motors with export packing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">376 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="6002 bearing 608 bearing 6000 bearing 6001 bearing 6003 bearing 6004 bearing 6002 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6002 electric motor machinery electric motor machinery bearing bearing export supply for electric motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing">复制</button>
+                  </div>
+                  <pre>6002 bearing 608 bearing 6000 bearing 6001 bearing 6003 bearing 6004 bearing 6002 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6002 electric motor machinery electric motor machinery bearing bearing export supply for electric motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 6002
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 15mm
+- Outside Diameter: 32mm
+- Width: 9mm
+- Weight: 0.0286kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 6002
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 15mm
+- Outside Diameter: 32mm
+- Width: 9mm
+- Weight: 0.0286kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 0.49
+- Suggested Listing Price: 0.48
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 0.49
+- Suggested Listing Price: 0.48
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">249 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 6002 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 6002 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-5" class="product-card" style="--card-accent:#0f766e;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 5</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>6003</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 7 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+6003 ZZ 608 2RS 6000 RS 6001 6002 6004 6005 Open Deep Groove Ball Bearing for Motor Machinery Wholesale Buyers
+
+副标题
+6003 ZZ 608 2RS 6000 6001 6002 6004 6005 6200 6201 6202 available for Motor Machinery with stable quality and fast delivery
+
+商品关键词
+6003 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6004 bearing 6003 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6003 motor machinery motor machinery bearing bearing for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing
+
+商品属性
+- Model Number: 6003
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 17mm
+- Outside Diameter: 35mm
+- Width: 10mm
+- Weight: 0.0375kg
+
+价格建议
+- Reference Price: 0.67
+- Suggested Listing Price: 0.65
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6003 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">6003 ZZ</span><span class="model-chip">608 2RS</span><span class="model-chip">6000 RS</span><span class="model-chip">6001</span><span class="model-chip">6002</span><span class="model-chip">6004</span><span class="model-chip">6005</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">110 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="6003 ZZ 608 2RS 6000 RS 6001 6002 6004 6005 Open Deep Groove Ball Bearing for Motor Machinery Wholesale Buyers">复制</button>
+                  </div>
+                  <pre>6003 ZZ 608 2RS 6000 RS 6001 6002 6004 6005 Open Deep Groove Ball Bearing for Motor Machinery Wholesale Buyers</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">123 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="6003 ZZ 608 2RS 6000 6001 6002 6004 6005 6200 6201 6202 available for Motor Machinery with stable quality and fast delivery">复制</button>
+                  </div>
+                  <pre>6003 ZZ 608 2RS 6000 6001 6002 6004 6005 6200 6201 6202 available for Motor Machinery with stable quality and fast delivery</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">364 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="6003 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6004 bearing 6003 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6003 motor machinery motor machinery bearing bearing for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing">复制</button>
+                  </div>
+                  <pre>6003 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6004 bearing 6003 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6003 motor machinery motor machinery bearing bearing for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">172 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 6003
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 17mm
+- Outside Diameter: 35mm
+- Width: 10mm
+- Weight: 0.0375kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 6003
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 17mm
+- Outside Diameter: 35mm
+- Width: 10mm
+- Weight: 0.0375kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 0.67
+- Suggested Listing Price: 0.65
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 0.67
+- Suggested Listing Price: 0.65
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">249 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 6003 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 6003 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-6" class="product-card" style="--card-accent:#be123c;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 6</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>6004</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 10 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Skate Wheels 6004 ZZ 608 2RS 6000 RS 6001 6002 6003 6005 6200 6201 6202 Deep Groove Ball Bearing OEM Service Wholesale Supply
+
+副标题
+6004 ZZ 608 2RS 6000 6001 6002 6003 Deep Groove Ball bearings for Industrial Machinery with factory supply and OEM support
+
+商品关键词
+6004 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6004 industrial machinery industrial machinery bearing bearing for industrial machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing
+
+商品属性
+- Model Number: 6004
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 20mm
+- Outside Diameter: 42mm
+- Width: 12mm
+- Weight: 0.0656kg
+
+价格建议
+- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6004 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">6004 ZZ</span><span class="model-chip">608 2RS</span><span class="model-chip">6000 RS</span><span class="model-chip">6001</span><span class="model-chip">6002</span><span class="model-chip">6003</span><span class="model-chip">6005</span><span class="model-chip">6200</span><span class="model-chip">6201</span><span class="model-chip">6202</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">125 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Skate Wheels 6004 ZZ 608 2RS 6000 RS 6001 6002 6003 6005 6200 6201 6202 Deep Groove Ball Bearing OEM Service Wholesale Supply">复制</button>
+                  </div>
+                  <pre>Skate Wheels 6004 ZZ 608 2RS 6000 RS 6001 6002 6003 6005 6200 6201 6202 Deep Groove Ball Bearing OEM Service Wholesale Supply</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="6004 ZZ 608 2RS 6000 6001 6002 6003 Deep Groove Ball bearings for Industrial Machinery with factory supply and OEM support">复制</button>
+                  </div>
+                  <pre>6004 ZZ 608 2RS 6000 6001 6002 6003 Deep Groove Ball bearings for Industrial Machinery with factory supply and OEM support</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">350 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="6004 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6004 industrial machinery industrial machinery bearing bearing for industrial machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing">复制</button>
+                  </div>
+                  <pre>6004 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6004 industrial machinery industrial machinery bearing bearing for industrial machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">172 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 6004
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 20mm
+- Outside Diameter: 42mm
+- Width: 12mm
+- Weight: 0.0656kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 6004
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 20mm
+- Outside Diameter: 42mm
+- Width: 12mm
+- Weight: 0.0656kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">249 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 6004 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 6004 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+    </div>
+  </div>
+  <button id="back-top" class="back-top" aria-label="返回顶部" title="返回顶部">↑</button>
+  <div id="toast" class="toast">已复制</div>
+  <script>
+    const allText = `产品 1｜608
+
+热门覆盖型号
+608 ZZ / 6000 2RS / 6001 RS / 6002 / 6003 / 6004 / 6005
+
+标题
+Motor Machinery 608 ZZ 6000 2RS 6001 RS 6002 6003 6004 6005 Deep Groove Ball Bearing High Speed Wholesale Supply
+
+副标题
+608 ZZ 6000 2RS 6001 6002 6003 6004 6005 bearing range for Skate Motor Small Machinery with wholesale supply
+
+商品关键词
+608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 608 ZZ bearing 6000 2RS bearing 6001 RS bearing 6002 Open bearing 608 skate motor small machinery skate motor small machinery bearing bearing for skate motor small machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing
+
+商品属性
+- Model Number: 608
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 8mm
+- Outside Diameter: 22mm
+- Width: 7mm
+- Weight: 0.012kg
+
+价格建议
+- Reference Price: 0.75
+- Suggested Listing Price: 0.73
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 608 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 2｜6000
+
+热门覆盖型号
+6000 ZZ / 608 2RS / 6001 RS / 6002 / 6003 / 6004 / 6005 / 6200 / 6201
+
+标题
+China Supplier Deep Groove Ball Bearing 6000 ZZ 608 2RS 6001 RS 6002 6003 6004 6005 6200 6201 Open for Agricultural Machinery
+
+副标题
+Ready stock 6000 ZZ 608 2RS 6001 6002 6003 6004 6005 6200 for Motor Machinery with wholesale order support
+
+商品关键词
+6000 bearing 608 bearing 6001 bearing 6002 bearing 6003 bearing 6004 bearing 6000 ZZ bearing 608 2RS bearing 6001 RS bearing 6002 Open bearing 6000 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing
+
+商品属性
+- Model Number: 6000
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 10mm
+- Outside Diameter: 26mm
+- Width: 8mm
+- Weight: 0.0178kg
+
+价格建议
+- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6000 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 3｜6001
+
+热门覆盖型号
+6001 ZZ / 608 2RS / 6000 RS / 6002 / 6003 / 6004 / 6005 / 6200 / 6201 / 6202 / 6203
+
+标题
+Hot Sale Deep Groove Ball Bearing 6001 ZZ 608 2RS 6000 RS 6002 6003 6004 6005 6200 6201 6202 6203 Open for Electric Motors
+
+副标题
+6001 ZZ 608 2RS 6000 6002 6003 6004 6005 6200 6201 6202 6203 6204 bearings for Motor Machinery with factory direct supply
+
+商品关键词
+6001 bearing 608 bearing 6000 bearing 6002 bearing 6003 bearing 6004 bearing 6001 ZZ bearing 608 2RS bearing 6000 RS bearing 6002 Open bearing 6001 motor machinery motor machinery bearing bearing export supply for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing
+
+商品属性
+- Model Number: 6001
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 12mm
+- Outside Diameter: 28mm
+- Width: 8mm
+- Weight: 0.0195kg
+
+价格建议
+- Reference Price: 0.55
+- Suggested Listing Price: 0.53
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6001 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 4｜6002
+
+热门覆盖型号
+6002 ZZ / 608 2RS / 6000 RS / 6001 / 6003 / 6004 / 6005 / 6200
+
+标题
+6002 ZZ 608 2RS 6000 RS 6001 6003 6004 6005 6200 Deep Groove Ball Bearing Open High Speed for Electric Motors
+
+副标题
+6002 ZZ 608 2RS 6000 6001 6003 6004 6005 6200 Chrome Steel Deep Groove Ball bearings for Electric Motors with export packing
+
+商品关键词
+6002 bearing 608 bearing 6000 bearing 6001 bearing 6003 bearing 6004 bearing 6002 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6002 electric motor machinery electric motor machinery bearing bearing export supply for electric motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing
+
+商品属性
+- Model Number: 6002
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 15mm
+- Outside Diameter: 32mm
+- Width: 9mm
+- Weight: 0.0286kg
+
+价格建议
+- Reference Price: 0.49
+- Suggested Listing Price: 0.48
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6002 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 5｜6003
+
+热门覆盖型号
+6003 ZZ / 608 2RS / 6000 RS / 6001 / 6002 / 6004 / 6005
+
+标题
+6003 ZZ 608 2RS 6000 RS 6001 6002 6004 6005 Open Deep Groove Ball Bearing for Motor Machinery Wholesale Buyers
+
+副标题
+6003 ZZ 608 2RS 6000 6001 6002 6004 6005 6200 6201 6202 available for Motor Machinery with stable quality and fast delivery
+
+商品关键词
+6003 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6004 bearing 6003 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6003 motor machinery motor machinery bearing bearing for motor machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing industrial equipment bearing
+
+商品属性
+- Model Number: 6003
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 17mm
+- Outside Diameter: 35mm
+- Width: 10mm
+- Weight: 0.0375kg
+
+价格建议
+- Reference Price: 0.67
+- Suggested Listing Price: 0.65
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6003 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 6｜6004
+
+热门覆盖型号
+6004 ZZ / 608 2RS / 6000 RS / 6001 / 6002 / 6003 / 6005 / 6200 / 6201 / 6202
+
+标题
+Skate Wheels 6004 ZZ 608 2RS 6000 RS 6001 6002 6003 6005 6200 6201 6202 Deep Groove Ball Bearing OEM Service Wholesale Supply
+
+副标题
+6004 ZZ 608 2RS 6000 6001 6002 6003 Deep Groove Ball bearings for Industrial Machinery with factory supply and OEM support
+
+商品关键词
+6004 bearing 608 bearing 6000 bearing 6001 bearing 6002 bearing 6003 bearing 6004 ZZ bearing 608 2RS bearing 6000 RS bearing 6001 Open bearing 6004 industrial machinery industrial machinery bearing bearing for industrial machinery deep groove ball bearing sealed ball bearing chrome steel bearing electric motor bearing pump bearing machinery bearing
+
+商品属性
+- Model Number: 6004
+- Type: Deep Groove Ball Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 20mm
+- Outside Diameter: 42mm
+- Width: 12mm
+- Weight: 0.0656kg
+
+价格建议
+- Reference Price: 0.47
+- Suggested Listing Price: 0.46
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 6004 Deep Groove Ball Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
+    const toast = document.getElementById("toast");
+    const backTopButton = document.getElementById("back-top");
+    let toastTimer = null;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      if (toastTimer) {
+        clearTimeout(toastTimer);
+      }
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1100);
+    }
+
+    function markCopied(button) {
+      if (!button) {
+        showToast("已复制");
+        return;
+      }
+      button.closest(".module, .product-card, .toolbar")?.classList?.add("copied");
+      const originalText = button.dataset.originalText || button.textContent;
+      button.dataset.originalText = originalText;
+      button.textContent = "已复制";
+      showToast("已复制");
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.closest(".module, .product-card, .toolbar")?.classList?.remove("copied");
+      }, 1000);
+    }
+
+    function fallbackCopyText(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return success;
+    }
+
+    async function copyText(text, button = null) {
+      try {
+        await navigator.clipboard.writeText(text);
+        markCopied(button);
+      } catch (error) {
+        if (fallbackCopyText(text)) {
+          markCopied(button);
+          return;
+        }
+        showToast("复制失败");
+      }
+    }
+
+    document.getElementById("copy-all-hero").addEventListener("click", (event) => copyText(allText, event.currentTarget));
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", () => copyText(button.dataset.copy, button));
+    });
+    backTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 320) {
+        backTopButton.classList.add("show");
+      } else {
+        backTopButton.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>
