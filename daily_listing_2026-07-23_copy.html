@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>今日发品复制页｜2026-07-23</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    :root {
+      --bg: #f7efe7;
+      --paper: rgba(255, 253, 249, 0.96);
+      --ink: #151922;
+      --muted: #424956;
+      --line: rgba(80, 62, 47, 0.18);
+      --hero: #0d6f64;
+      --hero-2: #f08c4a;
+      --shadow: 0 26px 70px rgba(68, 43, 18, 0.10);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      font-family: "Fira Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,0.92), transparent 24%),
+        radial-gradient(circle at right top, rgba(255,201,160,0.36), transparent 24%),
+        linear-gradient(180deg, #fff4e8 0%, #f7efe7 42%, #f1e8df 100%);
+      min-height: 100vh;
+      overscroll-behavior: contain;
+    }
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+    :focus-visible {
+      outline: 3px solid rgba(37, 99, 235, 0.38);
+      outline-offset: 3px;
+    }
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 18px 72px;
+    }
+    .float-blob {
+      position: fixed;
+      z-index: 0;
+      border-radius: 999px;
+      filter: blur(22px);
+      opacity: 0.32;
+      pointer-events: none;
+    }
+    .blob-a {
+      width: 210px;
+      height: 210px;
+      left: -40px;
+      top: 60px;
+      background: rgba(240, 140, 74, 0.22);
+    }
+    .blob-b {
+      width: 260px;
+      height: 260px;
+      right: -70px;
+      top: 220px;
+      background: rgba(13, 111, 100, 0.16);
+    }
+    .hero {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 18px;
+      padding: 30px;
+      border: 1px solid rgba(255,255,255,0.5);
+      border-radius: 34px;
+      background:
+        radial-gradient(circle at right top, rgba(255,255,255,0.30), transparent 28%),
+        linear-gradient(135deg, rgba(13,111,100,0.98), rgba(17,134,121,0.95) 50%, rgba(240,140,74,0.93));
+      color: #fffaf4;
+      box-shadow: var(--shadow);
+    }
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(130deg, transparent 0 56%, rgba(255,255,255,0.12) 56% 64%, transparent 64% 100%);
+      pointer-events: none;
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 1;
+      max-width: 980px;
+    }
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      margin-bottom: 12px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+    }
+    h1 {
+      margin: 0 0 12px;
+      font-size: clamp(32px, 5vw, 54px);
+      line-height: 1.06;
+      letter-spacing: -0.04em;
+      color: #fffaf4;
+    }
+    .sub {
+      max-width: 840px;
+      margin-bottom: 18px;
+      color: rgba(255,250,244,0.92);
+      font-size: 16px;
+      line-height: 1.85;
+      font-weight: 600;
+    }
+    .hero-stats {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .pill {
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.20);
+      font-size: 13px;
+      font-weight: 800;
+      backdrop-filter: blur(6px);
+    }
+    .toolbar {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    button {
+      border: 0;
+      min-height: 44px;
+      border-radius: 999px;
+      padding: 11px 18px;
+      background: linear-gradient(135deg, #0d6f64, #149788);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      touch-action: manipulation;
+      box-shadow: 0 12px 24px rgba(13, 111, 100, 0.18);
+      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+    }
+    button:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 16px 30px rgba(13, 111, 100, 0.24);
+      filter: saturate(1.06);
+    }
+    button:active {
+      transform: translateY(0) scale(0.99);
+    }
+    button.big {
+      background: linear-gradient(135deg, #d16f30, #f08c4a);
+      box-shadow: 0 14px 28px rgba(209, 111, 48, 0.24);
+      white-space: nowrap;
+    }
+    .nav-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 16px;
+    }
+    .nav-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 12px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.18);
+      color: #fffaf4;
+      font-size: 13px;
+      font-weight: 700;
+      transition: transform 0.16s ease, background 0.16s ease;
+    }
+    .nav-chip:hover {
+      transform: translateY(-2px);
+      background: rgba(255,255,255,0.20);
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      align-items: start;
+    }
+    .product-card {
+      position: relative;
+      overflow: hidden;
+      padding: 22px;
+      border: 1px solid rgba(255,255,255,0.56);
+      border-radius: 30px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.92), rgba(255,251,245,0.98)), var(--paper);
+      box-shadow: 0 18px 42px rgba(73, 51, 29, 0.08);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 52px rgba(73, 51, 29, 0.12);
+    }
+    .card-glow {
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      right: -60px;
+      top: -70px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-accent) 24%, white);
+      opacity: 0.36;
+      filter: blur(10px);
+    }
+    .card-ribbon {
+      position: absolute;
+      right: 18px;
+      top: 16px;
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--card-accent) 16%, white);
+      color: var(--card-accent);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .product-head {
+      position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+      color: var(--card-accent);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    h2 {
+      margin: 0 0 12px;
+      font-size: 30px;
+      line-height: 1;
+      letter-spacing: -0.04em;
+      color: #101827;
+    }
+    .product-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .soft-badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 7px 10px;
+      border-radius: 999px;
+      background: rgba(14, 124, 113, 0.08);
+      color: #243842;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .coverage-box {
+      margin-bottom: 12px;
+      padding: 14px;
+      border-radius: 20px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(252,246,239,0.92));
+      border: 1px solid rgba(123, 98, 78, 0.10);
+    }
+    .coverage-label {
+      margin-bottom: 6px;
+      color: #303946;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .coverage-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .model-chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.94);
+      border: 1px solid rgba(123, 98, 78, 0.12);
+      color: #17212f;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    .card-tip {
+      margin-bottom: 8px;
+      color: #27313f;
+      font-size: 13px;
+      line-height: 1.7;
+      font-weight: 600;
+    }
+    .module {
+      position: relative;
+      margin-top: 16px;
+      padding: 14px;
+      border: 1px solid rgba(123, 98, 78, 0.12);
+      border-radius: 20px;
+      background: rgba(255,255,255,0.68);
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
+    }
+    .module:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 26px rgba(73, 51, 29, 0.06);
+      border-color: rgba(14, 124, 113, 0.18);
+    }
+    .module.copied,
+    .product-card.copied,
+    .toolbar.copied {
+      box-shadow: 0 0 0 3px rgba(14, 124, 113, 0.12), 0 16px 28px rgba(13, 111, 100, 0.10);
+      border-color: rgba(14, 124, 113, 0.28);
+    }
+    .module-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 8px;
+    }
+    .module-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+    h3 {
+      margin: 0;
+      color: #151922;
+      font-size: 15px;
+    }
+    .module-meta {
+      color: #4b5563;
+      font-size: 12px;
+      font-weight: 700;
+    }
+    pre {
+      margin: 0;
+      max-height: 190px;
+      overflow: auto;
+      padding: 15px 16px;
+      border-radius: 18px;
+      background: linear-gradient(180deg, #fffaf5, #fbf5ec);
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.8;
+      font-size: 14px;
+      color: #111827;
+      font-family: "Fira Sans", "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+      border: 1px dashed rgba(13,111,100,0.14);
+    }
+    .back-top {
+      position: fixed;
+      right: 22px;
+      bottom: 84px;
+      z-index: 50;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #0d6f64, #149788);
+      color: #fff;
+      font-size: 18px;
+      box-shadow: 0 14px 28px rgba(15, 23, 42, 0.18);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(10px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+    .back-top.show {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0);
+    }
+    .toast {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(13, 111, 100, 0.96);
+      color: #fff;
+      font-size: 14px;
+      font-weight: 700;
+      box-shadow: 0 16px 34px rgba(15, 23, 42, 0.20);
+      opacity: 0;
+      transform: translateY(8px);
+      pointer-events: none;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+      z-index: 9999;
+    }
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    @media (max-width: 1180px) {
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+    @media (max-width: 760px) {
+      .wrap { padding: 18px 14px 54px; }
+      .hero { padding: 22px; border-radius: 24px; }
+      h1 { font-size: 32px; }
+      .nav-grid {
+        flex-direction: column;
+      }
+      .nav-chip { width: 100%; }
+      .grid { grid-template-columns: 1fr; }
+      .product-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+      .copy-btn.big {
+        width: 100%;
+      }
+      .module-head {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="float-blob blob-a"></div>
+  <div class="float-blob blob-b"></div>
+  <div class="wrap">
+    <section class="hero">
+      <div class="hero-copy">
+        <div class="hero-kicker">今日发品复制页</div>
+        <h1>把今天的 6 个商品内容整理好了</h1>
+        <div class="sub">7月23日 周四 · 标题、副标题、关键词、属性、价格建议和主图提示词已经按产品分栏排开。每个模块都能一键复制。</div>
+        <div class="hero-stats">
+          <div class="pill">一行展示 3 个商品</div>
+          <div class="pill">复制按钮无弹窗打断</div>
+          <div class="pill">深色文字更清楚</div>
+        </div>
+        <div class="nav-grid" aria-label="产品快速跳转">
+          <a class="nav-chip" href="#product-1">产品 1 · 22205</a><a class="nav-chip" href="#product-2">产品 2 · 22206</a><a class="nav-chip" href="#product-3">产品 3 · 22207</a><a class="nav-chip" href="#product-4">产品 4 · 22208</a><a class="nav-chip" href="#product-5">产品 5 · 22209</a><a class="nav-chip" href="#product-6">产品 6 · 22210</a>
+        </div>
+        <div class="toolbar">
+          <button id="copy-all-hero" title="复制全部商品内容" aria-label="复制全部商品内容">一键复制全部商品内容</button>
+        </div>
+      </div>
+    </section>
+
+    <div class="grid">
+      
+            <section id="product-1" class="product-card" style="--card-accent:#0e7c71;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 1</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>22205</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 7 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Hot Sale Spherical Roller Bearing 22205 CC/W33 22206 CCK/W33 22207 CA/W33 22208 for Industrial Equipment Replacement Parts
+
+副标题
+22205 CC/W33 22206 CCK/W33 22207 22208 22209 22210 22211 ready stock bearings for Industrial Equipment with export support
+
+商品关键词
+22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22205 CC/W33 bearing 22206 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22205 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22205
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 18mm
+- Weight: 0.18kg
+
+价格建议
+- Reference Price: 9.90
+- Suggested Listing Price: 9.60
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22205 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22205 CC</span><span class="model-chip">W33</span><span class="model-chip">22206 CCK</span><span class="model-chip">W33</span><span class="model-chip">22207 CA</span><span class="model-chip">W33</span><span class="model-chip">22208</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Hot Sale Spherical Roller Bearing 22205 CC/W33 22206 CCK/W33 22207 CA/W33 22208 for Industrial Equipment Replacement Parts">复制</button>
+                  </div>
+                  <pre>Hot Sale Spherical Roller Bearing 22205 CC/W33 22206 CCK/W33 22207 CA/W33 22208 for Industrial Equipment Replacement Parts</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="22205 CC/W33 22206 CCK/W33 22207 22208 22209 22210 22211 ready stock bearings for Industrial Equipment with export support">复制</button>
+                  </div>
+                  <pre>22205 CC/W33 22206 CCK/W33 22207 22208 22209 22210 22211 ready stock bearings for Industrial Equipment with export support</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">370 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22205 CC/W33 bearing 22206 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22205 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing">复制</button>
+                  </div>
+                  <pre>22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22205 CC/W33 bearing 22206 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22205 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 22205
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 18mm
+- Weight: 0.18kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 22205
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 18mm
+- Weight: 0.18kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 9.90
+- Suggested Listing Price: 9.60
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 9.90
+- Suggested Listing Price: 9.60
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 22205 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 22205 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-2" class="product-card" style="--card-accent:#dd7f3b;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 2</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>22206</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 8 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+22206 CC/W33 22205 CCK/W33 22207 CA/W33 22208 22209 Export Supply Spherical Roller Bearing for Mining Machinery Bulk Order
+
+副标题
+22206 CC/W33 22205 CCK/W33 22207 22208 22209 22210 ready for wholesale orders for Industrial Equipment with stable quality
+
+商品关键词
+22206 bearing 22205 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22206 CC/W33 bearing 22205 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22206 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22206
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 20mm
+- Weight: 0.29kg
+
+价格建议
+- Reference Price: 9.50
+- Suggested Listing Price: 9.21
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22206 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22206 CC</span><span class="model-chip">W33</span><span class="model-chip">22205 CCK</span><span class="model-chip">W33</span><span class="model-chip">22207 CA</span><span class="model-chip">W33</span><span class="model-chip">22208</span><span class="model-chip">22209</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="22206 CC/W33 22205 CCK/W33 22207 CA/W33 22208 22209 Export Supply Spherical Roller Bearing for Mining Machinery Bulk Order">复制</button>
+                  </div>
+                  <pre>22206 CC/W33 22205 CCK/W33 22207 CA/W33 22208 22209 Export Supply Spherical Roller Bearing for Mining Machinery Bulk Order</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="22206 CC/W33 22205 CCK/W33 22207 22208 22209 22210 ready for wholesale orders for Industrial Equipment with stable quality">复制</button>
+                  </div>
+                  <pre>22206 CC/W33 22205 CCK/W33 22207 22208 22209 22210 ready for wholesale orders for Industrial Equipment with stable quality</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">370 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="22206 bearing 22205 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22206 CC/W33 bearing 22205 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22206 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing">复制</button>
+                  </div>
+                  <pre>22206 bearing 22205 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22206 CC/W33 bearing 22205 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22206 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 22206
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 20mm
+- Weight: 0.29kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 22206
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 20mm
+- Weight: 0.29kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">70 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 9.50
+- Suggested Listing Price: 9.21
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 9.50
+- Suggested Listing Price: 9.21
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 22206 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 22206 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-3" class="product-card" style="--card-accent:#4f6fd8;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 3</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>22207</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 10 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Heavy Duty Spherical Roller Bearing 22207 CC/W33 22205 CCK/W33 22206 CA/W33 22208 22209 22210 22211 Chrome Steel for Drive Units
+
+副标题
+22207 CC/W33 22205 CCK/W33 22206 22208 22209 22210 22211 bearings for Transmission Equipment with factory direct supply
+
+商品关键词
+22207 bearing 22205 bearing 22206 bearing 22208 bearing 22209 bearing 22210 bearing 22207 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22208 MB/W33 bearing 22207 transmission equipment transmission equipment bearing bearing bulk order for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22207
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 35mm
+- Outside Diameter: 72mm
+- Width: 23mm
+- Weight: 0.43kg
+
+价格建议
+- Reference Price: 10.30
+- Suggested Listing Price: 9.99
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22207 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22207 CC</span><span class="model-chip">W33</span><span class="model-chip">22205 CCK</span><span class="model-chip">W33</span><span class="model-chip">22206 CA</span><span class="model-chip">W33</span><span class="model-chip">22208</span><span class="model-chip">22209</span><span class="model-chip">22210</span><span class="model-chip">22211</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">128 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Heavy Duty Spherical Roller Bearing 22207 CC/W33 22205 CCK/W33 22206 CA/W33 22208 22209 22210 22211 Chrome Steel for Drive Units">复制</button>
+                  </div>
+                  <pre>Heavy Duty Spherical Roller Bearing 22207 CC/W33 22205 CCK/W33 22206 CA/W33 22208 22209 22210 22211 Chrome Steel for Drive Units</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">119 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="22207 CC/W33 22205 CCK/W33 22206 22208 22209 22210 22211 bearings for Transmission Equipment with factory direct supply">复制</button>
+                  </div>
+                  <pre>22207 CC/W33 22205 CCK/W33 22206 22208 22209 22210 22211 bearings for Transmission Equipment with factory direct supply</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">376 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="22207 bearing 22205 bearing 22206 bearing 22208 bearing 22209 bearing 22210 bearing 22207 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22208 MB/W33 bearing 22207 transmission equipment transmission equipment bearing bearing bulk order for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing">复制</button>
+                  </div>
+                  <pre>22207 bearing 22205 bearing 22206 bearing 22208 bearing 22209 bearing 22210 bearing 22207 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22208 MB/W33 bearing 22207 transmission equipment transmission equipment bearing bearing bulk order for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 22207
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 35mm
+- Outside Diameter: 72mm
+- Width: 23mm
+- Weight: 0.43kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 22207
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 35mm
+- Outside Diameter: 72mm
+- Width: 23mm
+- Weight: 0.43kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">71 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 10.30
+- Suggested Listing Price: 9.99
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 10.30
+- Suggested Listing Price: 9.99
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 22207 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 22207 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-4" class="product-card" style="--card-accent:#8b5cf6;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 4</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>22208</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 8 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+22208 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22209 Spherical Roller Bearing for Vibration Screen Machinery Fast Delivery
+
+副标题
+Bulk buyers use 22208 CC/W33 22205 CCK/W33 22206 22207 22209 22210 22211 for Transmission Equipment with repeat order supply
+
+商品关键词
+22208 bearing 22205 bearing 22206 bearing 22207 bearing 22209 bearing 22210 bearing 22208 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22208 transmission equipment transmission equipment bearing bearing for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22208
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 40mm
+- Outside Diameter: 80mm
+- Width: 23mm
+- Weight: 0.52kg
+
+价格建议
+- Reference Price: 10.50
+- Suggested Listing Price: 10.19
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22208 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22208 CC</span><span class="model-chip">W33</span><span class="model-chip">22205 CCK</span><span class="model-chip">W33</span><span class="model-chip">22206 CA</span><span class="model-chip">W33</span><span class="model-chip">22207</span><span class="model-chip">22209</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">121 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="22208 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22209 Spherical Roller Bearing for Vibration Screen Machinery Fast Delivery">复制</button>
+                  </div>
+                  <pre>22208 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22209 Spherical Roller Bearing for Vibration Screen Machinery Fast Delivery</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">124 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="Bulk buyers use 22208 CC/W33 22205 CCK/W33 22206 22207 22209 22210 22211 for Transmission Equipment with repeat order supply">复制</button>
+                  </div>
+                  <pre>Bulk buyers use 22208 CC/W33 22205 CCK/W33 22206 22207 22209 22210 22211 for Transmission Equipment with repeat order supply</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">365 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="22208 bearing 22205 bearing 22206 bearing 22207 bearing 22209 bearing 22210 bearing 22208 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22208 transmission equipment transmission equipment bearing bearing for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing">复制</button>
+                  </div>
+                  <pre>22208 bearing 22205 bearing 22206 bearing 22207 bearing 22209 bearing 22210 bearing 22208 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22208 transmission equipment transmission equipment bearing bearing for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 22208
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 40mm
+- Outside Diameter: 80mm
+- Width: 23mm
+- Weight: 0.52kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 22208
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 40mm
+- Outside Diameter: 80mm
+- Width: 23mm
+- Weight: 0.52kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">72 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 10.50
+- Suggested Listing Price: 10.19
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 10.50
+- Suggested Listing Price: 10.19
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 22208 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 22208 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-5" class="product-card" style="--card-accent:#0f766e;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 5</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>22209</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 10 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Heavy Duty Spherical Roller Bearing 22209 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 22210 22211 Chrome Steel for Drive Units
+
+副标题
+Factory supply 22209 CC/W33 22205 CCK/W33 22206 22207 22208 22210 for Mining Machinery with inspection and export cartons
+
+商品关键词
+22209 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22210 bearing 22209 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22209 mining machinery mining machinery bearing bearing for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing
+
+商品属性
+- Model Number: 22209
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 45mm
+- Outside Diameter: 85mm
+- Width: 23mm
+- Weight: 0.57kg
+
+价格建议
+- Reference Price: 10.98
+- Suggested Listing Price: 10.65
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22209 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22209 CC</span><span class="model-chip">W33</span><span class="model-chip">22205 CCK</span><span class="model-chip">W33</span><span class="model-chip">22206 CA</span><span class="model-chip">W33</span><span class="model-chip">22207</span><span class="model-chip">22208</span><span class="model-chip">22210</span><span class="model-chip">22211</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">128 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Heavy Duty Spherical Roller Bearing 22209 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 22210 22211 Chrome Steel for Drive Units">复制</button>
+                  </div>
+                  <pre>Heavy Duty Spherical Roller Bearing 22209 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 22210 22211 Chrome Steel for Drive Units</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">121 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="Factory supply 22209 CC/W33 22205 CCK/W33 22206 22207 22208 22210 for Mining Machinery with inspection and export cartons">复制</button>
+                  </div>
+                  <pre>Factory supply 22209 CC/W33 22205 CCK/W33 22206 22207 22208 22210 for Mining Machinery with inspection and export cartons</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">347 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="22209 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22210 bearing 22209 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22209 mining machinery mining machinery bearing bearing for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing">复制</button>
+                  </div>
+                  <pre>22209 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22210 bearing 22209 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22209 mining machinery mining machinery bearing bearing for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 22209
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 45mm
+- Outside Diameter: 85mm
+- Width: 23mm
+- Weight: 0.57kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 22209
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 45mm
+- Outside Diameter: 85mm
+- Width: 23mm
+- Weight: 0.57kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">72 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 10.98
+- Suggested Listing Price: 10.65
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 10.98
+- Suggested Listing Price: 10.65
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 22209 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 22209 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+            <section id="product-6" class="product-card" style="--card-accent:#be123c;">
+              <div class="card-glow"></div>
+              <div class="card-ribbon">产品 6</div>
+              <div class="product-head">
+                <div>
+                  <div class="eyebrow">今日待发布</div>
+                  <h2>22210</h2>
+                  <div class="product-badges">
+                    <span class="soft-badge">6 个模块</span>
+                    <span class="soft-badge">热门覆盖 8 个型号</span>
+                  </div>
+                </div>
+                <button class="copy-btn big" title="复制本商品全部内容" aria-label="复制本商品全部内容" data-copy="标题
+Ready Stock 22210 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 Export Supply Spherical Roller Bearing Open for Mining Machinery
+
+副标题
+Mining Machinery buyers can source 22210 CC/W33 22205 CCK/W33 22206 22207 22208 22209 with OEM packing and stable delivery
+
+商品关键词
+22210 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22210 mining machinery mining machinery bearing bearing bulk order for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing
+
+商品属性
+- Model Number: 22210
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg
+
+价格建议
+- Reference Price: 12.07
+- Suggested Listing Price: 11.71
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制本商品全部内容</button>
+              </div>
+              <div class="coverage-box">
+                <div class="coverage-label">热门覆盖型号</div>
+                <div class="coverage-chips"><span class="model-chip">22210 CC</span><span class="model-chip">W33</span><span class="model-chip">22205 CCK</span><span class="model-chip">W33</span><span class="model-chip">22206 CA</span><span class="model-chip">W33</span><span class="model-chip">22207</span><span class="model-chip">22208</span></div>
+              </div>
+              <div class="card-tip">建议先复制标题和关键词，再检查属性与价格。</div>
+              
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>标题</h3>
+                      <span class="module-meta">128 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制标题" aria-label="复制标题" data-copy="Ready Stock 22210 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 Export Supply Spherical Roller Bearing Open for Mining Machinery">复制</button>
+                  </div>
+                  <pre>Ready Stock 22210 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 Export Supply Spherical Roller Bearing Open for Mining Machinery</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>副标题</h3>
+                      <span class="module-meta">122 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制副标题" aria-label="复制副标题" data-copy="Mining Machinery buyers can source 22210 CC/W33 22205 CCK/W33 22206 22207 22208 22209 with OEM packing and stable delivery">复制</button>
+                  </div>
+                  <pre>Mining Machinery buyers can source 22210 CC/W33 22205 CCK/W33 22206 22207 22208 22209 with OEM packing and stable delivery</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品关键词</h3>
+                      <span class="module-meta">358 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品关键词" aria-label="复制商品关键词" data-copy="22210 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22210 mining machinery mining machinery bearing bearing bulk order for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing">复制</button>
+                  </div>
+                  <pre>22210 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22210 mining machinery mining machinery bearing bearing bulk order for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>商品属性</h3>
+                      <span class="module-meta">171 字符 · 8 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制商品属性" aria-label="复制商品属性" data-copy="- Model Number: 22210
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg">复制</button>
+                  </div>
+                  <pre>- Model Number: 22210
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>价格建议</h3>
+                      <span class="module-meta">72 字符 · 3 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制价格建议" aria-label="复制价格建议" data-copy="- Reference Price: 12.07
+- Suggested Listing Price: 11.71
+- MOQ: 100 pcs">复制</button>
+                  </div>
+                  <pre>- Reference Price: 12.07
+- Suggested Listing Price: 11.71
+- MOQ: 100 pcs</pre>
+                </div>
+                
+                <div class="module">
+                  <div class="module-head">
+                    <div class="module-title-wrap">
+                      <h3>主图生成提示词</h3>
+                      <span class="module-meta">250 字符 · 1 行</span>
+                    </div>
+                    <button class="copy-btn" title="复制主图生成提示词" aria-label="复制主图生成提示词" data-copy="Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo">复制</button>
+                  </div>
+                  <pre>Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo</pre>
+                </div>
+                
+            </section>
+            
+    </div>
+  </div>
+  <button id="back-top" class="back-top" aria-label="返回顶部" title="返回顶部">↑</button>
+  <div id="toast" class="toast">已复制</div>
+  <script>
+    const allText = `产品 1｜22205
+
+热门覆盖型号
+22205 CC/W33 / 22206 CCK/W33 / 22207 CA/W33 / 22208
+
+标题
+Hot Sale Spherical Roller Bearing 22205 CC/W33 22206 CCK/W33 22207 CA/W33 22208 for Industrial Equipment Replacement Parts
+
+副标题
+22205 CC/W33 22206 CCK/W33 22207 22208 22209 22210 22211 ready stock bearings for Industrial Equipment with export support
+
+商品关键词
+22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22205 CC/W33 bearing 22206 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22205 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22205
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 25mm
+- Outside Diameter: 52mm
+- Width: 18mm
+- Weight: 0.18kg
+
+价格建议
+- Reference Price: 9.90
+- Suggested Listing Price: 9.60
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22205 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 2｜22206
+
+热门覆盖型号
+22206 CC/W33 / 22205 CCK/W33 / 22207 CA/W33 / 22208 / 22209
+
+标题
+22206 CC/W33 22205 CCK/W33 22207 CA/W33 22208 22209 Export Supply Spherical Roller Bearing for Mining Machinery Bulk Order
+
+副标题
+22206 CC/W33 22205 CCK/W33 22207 22208 22209 22210 ready for wholesale orders for Industrial Equipment with stable quality
+
+商品关键词
+22206 bearing 22205 bearing 22207 bearing 22208 bearing 22209 bearing 22210 bearing 22206 CC/W33 bearing 22205 CCK/W33 bearing 22207 CA/W33 bearing 22208 MB/W33 bearing 22206 industrial equipment industrial equipment bearing bearing bulk order for industrial equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22206
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 30mm
+- Outside Diameter: 62mm
+- Width: 20mm
+- Weight: 0.29kg
+
+价格建议
+- Reference Price: 9.50
+- Suggested Listing Price: 9.21
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22206 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 3｜22207
+
+热门覆盖型号
+22207 CC/W33 / 22205 CCK/W33 / 22206 CA/W33 / 22208 / 22209 / 22210 / 22211
+
+标题
+Heavy Duty Spherical Roller Bearing 22207 CC/W33 22205 CCK/W33 22206 CA/W33 22208 22209 22210 22211 Chrome Steel for Drive Units
+
+副标题
+22207 CC/W33 22205 CCK/W33 22206 22208 22209 22210 22211 bearings for Transmission Equipment with factory direct supply
+
+商品关键词
+22207 bearing 22205 bearing 22206 bearing 22208 bearing 22209 bearing 22210 bearing 22207 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22208 MB/W33 bearing 22207 transmission equipment transmission equipment bearing bearing bulk order for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22207
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 35mm
+- Outside Diameter: 72mm
+- Width: 23mm
+- Weight: 0.43kg
+
+价格建议
+- Reference Price: 10.30
+- Suggested Listing Price: 9.99
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22207 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 4｜22208
+
+热门覆盖型号
+22208 CC/W33 / 22205 CCK/W33 / 22206 CA/W33 / 22207 / 22209
+
+标题
+22208 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22209 Spherical Roller Bearing for Vibration Screen Machinery Fast Delivery
+
+副标题
+Bulk buyers use 22208 CC/W33 22205 CCK/W33 22206 22207 22209 22210 22211 for Transmission Equipment with repeat order supply
+
+商品关键词
+22208 bearing 22205 bearing 22206 bearing 22207 bearing 22209 bearing 22210 bearing 22208 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22208 transmission equipment transmission equipment bearing bearing for transmission equipment spherical roller bearing heavy load roller bearing double row roller bearing mining machinery bearing
+
+商品属性
+- Model Number: 22208
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 40mm
+- Outside Diameter: 80mm
+- Width: 23mm
+- Weight: 0.52kg
+
+价格建议
+- Reference Price: 10.50
+- Suggested Listing Price: 10.19
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22208 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 5｜22209
+
+热门覆盖型号
+22209 CC/W33 / 22205 CCK/W33 / 22206 CA/W33 / 22207 / 22208 / 22210 / 22211
+
+标题
+Heavy Duty Spherical Roller Bearing 22209 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 22210 22211 Chrome Steel for Drive Units
+
+副标题
+Factory supply 22209 CC/W33 22205 CCK/W33 22206 22207 22208 22210 for Mining Machinery with inspection and export cartons
+
+商品关键词
+22209 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22210 bearing 22209 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22209 mining machinery mining machinery bearing bearing for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing
+
+商品属性
+- Model Number: 22209
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 45mm
+- Outside Diameter: 85mm
+- Width: 23mm
+- Weight: 0.57kg
+
+价格建议
+- Reference Price: 10.98
+- Suggested Listing Price: 10.65
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22209 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo
+
+
+产品 6｜22210
+
+热门覆盖型号
+22210 CC/W33 / 22205 CCK/W33 / 22206 CA/W33 / 22207 / 22208
+
+标题
+Ready Stock 22210 CC/W33 22205 CCK/W33 22206 CA/W33 22207 22208 Export Supply Spherical Roller Bearing Open for Mining Machinery
+
+副标题
+Mining Machinery buyers can source 22210 CC/W33 22205 CCK/W33 22206 22207 22208 22209 with OEM packing and stable delivery
+
+商品关键词
+22210 bearing 22205 bearing 22206 bearing 22207 bearing 22208 bearing 22209 bearing 22210 CC/W33 bearing 22205 CCK/W33 bearing 22206 CA/W33 bearing 22207 MB/W33 bearing 22210 mining machinery mining machinery bearing bearing bulk order for mining machinery spherical roller bearing heavy load roller bearing double row roller bearing vibration screen bearing
+
+商品属性
+- Model Number: 22210
+- Type: Spherical Roller Bearing
+- Structure: Open
+- Material: Chrome Steel
+- Bore Size: 50mm
+- Outside Diameter: 90mm
+- Width: 23mm
+- Weight: 0.78kg
+
+价格建议
+- Reference Price: 12.07
+- Suggested Listing Price: 11.71
+- MOQ: 100 pcs
+
+主图生成提示词
+Bright product photography of 22210 Spherical Roller Bearing, Open, Chrome Steel, clean background, Alibaba.com product image, no logo, no brand text, unbranded packaging, bright lighting, clean industrial style, sharp detail, realistic product photo`;
+    const toast = document.getElementById("toast");
+    const backTopButton = document.getElementById("back-top");
+    let toastTimer = null;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("show");
+      if (toastTimer) {
+        clearTimeout(toastTimer);
+      }
+      toastTimer = setTimeout(() => {
+        toast.classList.remove("show");
+      }, 1100);
+    }
+
+    function markCopied(button) {
+      if (!button) {
+        showToast("已复制");
+        return;
+      }
+      button.closest(".module, .product-card, .toolbar")?.classList?.add("copied");
+      const originalText = button.dataset.originalText || button.textContent;
+      button.dataset.originalText = originalText;
+      button.textContent = "已复制";
+      showToast("已复制");
+      setTimeout(() => {
+        button.textContent = originalText;
+        button.closest(".module, .product-card, .toolbar")?.classList?.remove("copied");
+      }, 1000);
+    }
+
+    function fallbackCopyText(text) {
+      const textarea = document.createElement("textarea");
+      textarea.value = text;
+      textarea.setAttribute("readonly", "");
+      textarea.style.position = "fixed";
+      textarea.style.opacity = "0";
+      document.body.appendChild(textarea);
+      textarea.select();
+      const success = document.execCommand("copy");
+      document.body.removeChild(textarea);
+      return success;
+    }
+
+    async function copyText(text, button = null) {
+      try {
+        await navigator.clipboard.writeText(text);
+        markCopied(button);
+      } catch (error) {
+        if (fallbackCopyText(text)) {
+          markCopied(button);
+          return;
+        }
+        showToast("复制失败");
+      }
+    }
+
+    document.getElementById("copy-all-hero").addEventListener("click", (event) => copyText(allText, event.currentTarget));
+    document.querySelectorAll(".copy-btn").forEach((button) => {
+      button.addEventListener("click", () => copyText(button.dataset.copy, button));
+    });
+    backTopButton.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 320) {
+        backTopButton.classList.add("show");
+      } else {
+        backTopButton.classList.remove("show");
+      }
+    });
+  </script>
+</body>
+</html>
